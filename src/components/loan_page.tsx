@@ -168,7 +168,7 @@ const LoanPage: React.FC = () => {
     <div className="bg-orange-50">
       {/* Logo */}
       <div className="box-product">
-        <div className="container">
+        <div className="">
           <div className="logo-tima text-center w-100-l">
             <div style={{ width: "30%" }}>
               <img src={logoTima} />
@@ -303,7 +303,7 @@ const LoanPage: React.FC = () => {
 
       {/* Steps */}
       <div className="box-step-borrow-mobile">
-        <div className="container">
+        <div className="">
           <div className="title">
             <h2 style={{ fontSize: "18px" ,color: "black" }}>
               Chỉ với <strong className="colorTima">04 bước đơn giản</strong> bạn đã được vay!

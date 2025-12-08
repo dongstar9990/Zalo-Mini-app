@@ -431,3 +431,66 @@
 .colorTima {
     color: #F7753F !important;
 }
+@media screen and (min-height: 480px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 170px;
+    }
+}
+@media screen and (min-height: 600px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 120px;
+    }
+}
+@media screen and (min-height: 800px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 130px;
+    }
+}
+@media screen and (min-height: 1000px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 250px;
+    }   
+    .box-install-mytima-mobile .content{
+        width: 50%;
+        margin: 0px auto;
+    }
+    .box-install-mytima-mobile .icon{
+        margin-bottom: 20px;
+    }
+    .box-install-mytima-mobile .text{
+        margin-bottom: 20px;
+    }
+    .box-install-mytima-mobile .title{
+        margin-bottom: 25px;
+    }
+    .content-right-install-mytima-product{
+            width: 100%;
+            padding-top: 30px;
+            margin: 0 auto;
+            float:none;
+    }
+    .content-right-install-mytima-product .box-qr-mytima{
+        width:100%;
+    }
+    .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima{
+        width: 35%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (min-height: 1100px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 280px;
+    }
+    
+}
+@media screen and (min-height: 1300px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 320px;
+    }
+}
+@media screen and (min-height: 1500px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 520px;
+    }
+}
