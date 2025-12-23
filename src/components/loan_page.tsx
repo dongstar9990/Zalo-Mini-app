@@ -19,6 +19,7 @@ import qrMyTima from '../pages/images/qr-mytima.png';
 
 import downloadAppImg from '../pages/images/icon-download.png';
 import zmp from "zmp-sdk";
+import { openWebview } from "zmp-sdk";
 
 const LoanPage: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -42,6 +43,8 @@ const LoanPage: React.FC = () => {
   const [requiredCarReg, setRequiredCarReg] = useState(false);
   const [requiredLoanPackage, setRequiredLoanPackage] = useState(false);
 
+  const [selectLoanOpen, setSelectLoanOpen] = useState(false);
+
   const openModal = (type: string) => {
     setLoanType(type);
     setModalOpen(true);
@@ -53,7 +56,7 @@ const LoanPage: React.FC = () => {
     setRequiredCarReg(false);
     setRequiredLoanPackage(false);
 
-    if (type === "Vay bằng ô tô") {
+    if (type === "Vay bằng cà vẹt ô tô") {
       setShowReferral(false);
       setShowCarReg(true);
       setRequiredCarReg(true);
@@ -92,7 +95,7 @@ const LoanPage: React.FC = () => {
     console.log(" productID_pk:" ,productID_pk);
     let productID ;
 
-    if (loanType === "Vay bằng ô tô") {
+    if (loanType === "Vay bằng cà vẹt ô tô") {
         productID = 8;
 
     } 
@@ -201,14 +204,14 @@ const LoanPage: React.FC = () => {
             <div className="box-default loan-option">
               <a
                 className="a-box-default"
-                onClick={() => openModal("Vay bằng ô tô")}
+                onClick={() => openModal("Vay bằng cà vẹt ô tô")}
                 style={{ width: "95%" }}
               >
                 <div className="icon">
                   <img src={vayBangOtoImg} />
                 </div>
                 <div className="text">
-                  <h3><span className="top">Vay bằng ô tô</span></h3>
+                  <h3><span className="top">Vay bằng cà vẹt ô tô</span></h3>
                 </div>
               </a>
             </div>
@@ -236,7 +239,7 @@ const LoanPage: React.FC = () => {
         <div className="container-install">
           <div className="title">
             <h2 style={{ fontSize: "18px" }}>
-              Tải ứng dụng My Tima <strong className="colorTima">nhận ngay 2 Tỷ</strong>
+              Ưu điểm vay <strong className="colorTima">Online Nhanh tại Tima</strong>
             </h2>
           </div>
 
@@ -244,23 +247,23 @@ const LoanPage: React.FC = () => {
           {[
             {
               img: icon01,
-              title: "Truy cập vào Google Play hoặc App Store",
-              desc: "Google Play cho Android – App Store cho iPhone.",
+              title: "Duyệt vay nhanh",
+              desc: "Nhận tiền trong 2 giờ kể từ khi đăng ký",
             },
             {
               img: icon02,
-              title: "Tìm kiếm từ khóa “My Tima”",
-              desc: "Nhập từ khóa “My Tima” trên thanh tìm kiếm.",
+              title: "Hạn mức vay lớn",
+              desc: "Lên đến 2 tỷ đồng, phù hợp với mọi nhu cầu tài chính",
             },
             {
               img: icon03,
-              title: "Click vào “Cài đặt”",
-              desc: "Tải app chỉ trong 30 giây.",
+              title: "Thủ tục tối giản",
+              desc: "KHÔNG thẩm định, KHÔNG tra nợ xấu, KHÔNG chứng minh thu nhập.",
             },
             {
               img: icon04,
-              title: "Mở app My Tima, nhập số điện thoại",
-              desc: "Nhập mã OTP và định danh tài khoản.",
+              title: "Bảo mật thông tin",
+              desc: "Cam kết bảo mật tuyệt đối thông tin người vay theo quy định của nhà nước",
             },
           ].map((item, i) => (
             <div className="content" key={i}>
@@ -275,10 +278,10 @@ const LoanPage: React.FC = () => {
           ))}
 
             {/* QR Download */}
-            <div className="content-right-install-mytima-product">
+            {/* <div className="content-right-install-mytima-product">
             <div className="box-qr-mytima">
                 <div className="left-qr-mytima">
-                {/* <div
+                <div
                     onClick={() =>
                         zmp.openWebview({
                         url: "https://redirect.appmetrica.yandex.com/serve/678108671904922699",
@@ -287,7 +290,7 @@ const LoanPage: React.FC = () => {
                     style={{ cursor: "pointer" }}
                     >
                     <img src={downloadAppImg} alt="Download My Tima" />
-                    </div> */}
+                    </div>
                 <br />
                 <span>Quét mã QR để tải ngay ứng dụng My Tima</span>
                 </div>
@@ -295,7 +298,7 @@ const LoanPage: React.FC = () => {
                 <img src={qrMyTima} alt="QR My Tima" />
                 </div>
             </div>
-            </div>
+            </div> */}
 
 
         </div>
@@ -353,16 +356,18 @@ const LoanPage: React.FC = () => {
 
       {/* ========== NÚT TẢI APP ========== */}
       <div className="mx-3 mt-6 space-y-3">
-        {/* <button
-        onClick={() =>
-            zmp.openWebview({
-            url: "https://redirect.appmetrica.yandex.com/serve/678108671904922699",
-            })
+        <button
+        
+        onClick={() => {
+          setSelectLoanOpen(true)
+          console.log("CLICK ĐĂNG KÝ NGAY");
+          }
         }
+
         className="w-full bg-tima-orange text-white font-bold py-2 rounded"
         >
-        Tải app ngay
-        </button> */}
+        Đăng ký ngay
+        </button>
 
       </div>
 
@@ -542,15 +547,20 @@ const LoanPage: React.FC = () => {
                   required
                 />
                 <span className="text-sm text-gray-700">
-                    Tôi đồng ý với{' '}
-                    <a
-                        href="https://cdn.tima.vn/file-pdf/20240509_DIEU_KHOAN_VA_DIEU_KIEN_TIMA.pdf"
-                        className="text-orange-500 font-bold hover:text-orange-600"
-                    >
-                        điều khoản và điều kiện
-                    </a>{' '}
-                    của Tima
-                    </span>
+                  Tôi đồng ý với{" "}
+                  <span
+                    onClick={() =>
+                      openWebview({
+                        url: "https://cdn.tima.vn/file-pdf/20240509_DIEU_KHOAN_VA_DIEU_KIEN_TIMA.pdf",
+                      })
+                    }
+                    className="text-orange-500 font-bold hover:text-orange-600 underline"
+                  >
+                    điều khoản và điều kiện
+                  </span>{" "}
+                  của Tima
+                </span>
+
               </div>
 
               <button
