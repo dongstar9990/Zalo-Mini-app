@@ -153,6 +153,8 @@ const LoanPage: React.FC = () => {
     }
   };
 
+
+
 //   const handleDownload = () => {
 //     const userAgent = navigator.userAgent;
 
@@ -192,12 +194,15 @@ const LoanPage: React.FC = () => {
                 onClick={() => openModal("Vay mua ô tô")}
                 style={{ width: "95%" }}
               >
-                <div className="icon">
-                  <img src={vayOtoImg} />
+                <div className="icon" style={{ display: "flex", justifyContent: "center" }}>
+
+                    <img src={vayOtoImg}  style={{width:"60%"}} className="vay-mua-oto"/>
                 </div>
-                <div className="text">
+                 <div className="text">
                   <h3><span className="top">Vay mua ô tô</span></h3>
-                </div>
+                </div> 
+                
+
               </a>
             </div>
 
@@ -216,7 +221,11 @@ const LoanPage: React.FC = () => {
               </a>
             </div>
 
-            <div className="box-default loan-option">
+
+            
+
+
+            {/* <div className="box-default loan-option">
               <a
                 className="a-box-default"
                 onClick={() => openModal("Khác")}
@@ -229,7 +238,7 @@ const LoanPage: React.FC = () => {
                   <h3><span className="top">Khác</span></h3>
                 </div>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -358,13 +367,9 @@ const LoanPage: React.FC = () => {
       <div className="mx-3 mt-6 space-y-3">
         <button
         
-        onClick={() => {
-          setSelectLoanOpen(true)
-          console.log("CLICK ĐĂNG KÝ NGAY");
-          }
-        }
+       onClick={() => openModal("Vay mua ô tô")}
 
-        className="w-full bg-tima-orange text-white font-bold py-2 rounded"
+        className="fixed-btn w-full bg-tima-orange text-white font-bold py-2 rounded" 
         >
         Đăng ký ngay
         </button>
@@ -389,11 +394,23 @@ const LoanPage: React.FC = () => {
               {/* LOẠI VAY */}
               <div className="mb-3">
                 <label className="block text-gray-700">Loại vay</label>
-                <input
+                {/* <input
                   value={loanType}
                   readOnly
                   className="w-full border rounded px-3 py-2"
-                />
+                /> */}
+                <select
+                  className="w-full border rounded px-3 py-2 loan-option"
+                  defaultValue=""
+                  onChange={(e) => openModal(e.target.value)}
+                >
+                  <option value="" disabled>
+                    Chọn hình thức vay
+                  </option>
+                  <option value="Vay mua ô tô">Vay mua ô tô</option>
+                  <option value="Vay bằng cà vẹt ô tô">Vay bằng cà vẹt ô tô</option>
+                </select>
+
               </div>
 
               {/* HỌ TÊN */}
@@ -512,7 +529,7 @@ const LoanPage: React.FC = () => {
               )}
 
               {/* MÃ GIỚI THIỆU */}
-              {showReferral && (
+              {/* {showReferral && (
                 <div className="mb-3">
                   <label className="block text-gray-700">Mã giới thiệu (nếu có)</label>
                   <input
@@ -521,10 +538,10 @@ const LoanPage: React.FC = () => {
                     className="w-full border rounded px-3 py-2"
                   />
                 </div>
-              )}
+              )} */}
 
               {/* CHECK CÀ VẸT */}
-              {showCarReg && (
+              {/* {showCarReg && (
                 <div className="mb-3 flex items-start gap-2">
                   <input
                     type="checkbox"
@@ -536,7 +553,7 @@ const LoanPage: React.FC = () => {
                     Tôi xác nhận có cà vẹt xe ô tô
                   </span>
                 </div>
-              )}
+              )} */}
 
               {/* ĐỒNG Ý ĐIỀU KHOẢN */}
               <div className="mb-3 flex items-start gap-2">
