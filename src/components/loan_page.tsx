@@ -128,6 +128,35 @@ const LoanPage: React.FC = () => {
     console.log("FINAL PAYLOAD SEND:", payload);
 
     try {
+      // 1. Check tồn tại SĐT qua n8n
+      const checkRes = await fetch(
+        "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: payload.phone, // nhớ truyền phone
+          }),
+        }
+      );
+
+      if (!checkRes.ok) {
+        alert("Không kiểm tra được số điện thoại");
+        return;
+      }
+
+      const checkResult = await checkRes.json();
+      console.log("Check phone:", checkResult.response);
+
+      // 2. Nếu đã tồn tại → dừng
+      if (checkResult.response === "1") {
+        alert("Số điện thoại đã tồn tại trong hệ thống");
+        console.log("Check phone:", checkResult.response);
+        return;
+      }
+        // 3. Nếu chưa tồn tại → gọi create loan
       const res = await fetch("https://apilos.tima.vn/api/v1.0/affiliatetima/create_loan_tima", {
         method: "POST",
         headers: {
@@ -364,6 +393,7 @@ const LoanPage: React.FC = () => {
       </div>
 
       {/* ========== NÚT TẢI APP ========== */}
+      {!modalOpen && (
       <div className="mx-3 mt-6 space-y-3">
         <button
         
@@ -375,7 +405,7 @@ const LoanPage: React.FC = () => {
         </button>
 
       </div>
-
+      )}
       {/* ========== MODAL ========== */}
       {modalOpen && (
         <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -399,11 +429,15 @@ const LoanPage: React.FC = () => {
                   readOnly
                   className="w-full border rounded px-3 py-2"
                 /> */}
-                <select
-                  className="w-full border rounded px-3 py-2 loan-option"
-                  defaultValue=""
-                  onChange={(e) => openModal(e.target.value)}
-                >
+                  <select
+                    className="w-full border rounded px-3 py-2 loan-option"
+                    value={loanType}
+                    onChange={(e) => {
+                      setLoanType(e.target.value);
+                      openModal(e.target.value);
+                    }}
+                    required
+                  >
                   <option value="" disabled>
                     Chọn hình thức vay
                   </option>
