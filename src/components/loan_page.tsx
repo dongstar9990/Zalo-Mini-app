@@ -45,6 +45,14 @@ const LoanPage: React.FC = () => {
 
   const [selectLoanOpen, setSelectLoanOpen] = useState(false);
 
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [blocking, setBlocking] = useState(false);
+
+  const PHONE_REGEX = /^0\d{9}$/;
+
+  const [phoneError, setPhoneError] = useState("");
+
   const openModal = (type: string) => {
     setLoanType(type);
     setModalOpen(true);
@@ -79,108 +87,93 @@ const LoanPage: React.FC = () => {
   };
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  e.preventDefault();
+  
+  // 1. Validate input
+  if (!PHONE_REGEX.test(phone)) {
+    alert("Số điện thoại không hợp lệ");
+    return;
+  }
 
+  if (isSubmitting) return;
+
+  setIsSubmitting(true);
+  setBlocking(true); // 🔒 block toàn màn hình
+
+  try {
     let productID_pk;
 
-    if (loanPackage === "1") {
-        productID_pk = 2;
-        console.log("FINAL productID_pk:" ,productID_pk);
-        
-    } 
-    else if (loanPackage === "2") {
-        productID_pk = 8;
-        console.log("FINAL productID_pk:" ,productID_pk);
-    }
-    console.log(" productID_pk:" ,productID_pk);
-    let productID ;
+    if (loanPackage === "1") productID_pk = 2;
+    else if (loanPackage === "2") productID_pk = 8;
 
-    if (loanType === "Vay bằng cà vẹt ô tô") {
-        productID = 8;
+    let productID;
+    if (loanType === "Vay bằng cà vẹt ô tô") productID = 8;
+    else if (loanType === "Vay mua ô tô") productID = 31;
+    else if (loanType === "Khác") productID = productID_pk;
 
-    } 
-    else if (loanType === "Vay mua ô tô") {
-        productID = 31;
-        
-    }
-    
-    else if (loanType === "Khác") {
-        productID = productID_pk;
-    }
-    console.log(" productID_:" ,productID);
     const payload = {
-    //   loan_type: loanType,
-      "productId":productID,
-      "fullName":name,
-      "phone":phone,
-      "provinceName":province,
-      "partnerName" : "Zalo OA",
-      "districtName": null,
-      "nationalCard": null,
-      "loanAmount": null,
-      "affSId": null
-    //   referral_code: referralCode || null,
-    //   loan_package: loanPackage || null,
-    //   agree_terms: agreeTerms,
-    //   agree_car_reg: agreeCarReg,
+      productId: productID,
+      fullName: name,
+      phone,
+      provinceName: province,
+      partnerName: "Zalo OA",
+      districtName: null,
+      nationalCard: null,
+      loanAmount: null,
+      affSId: null,
     };
 
-    console.log("FINAL PAYLOAD SEND:", payload);
-
-    try {
-      // 1. Check tồn tại SĐT qua n8n
-      const checkRes = await fetch(
-        "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            phone: payload.phone, // nhớ truyền phone
-          }),
-        }
-      );
-
-      if (!checkRes.ok) {
-        alert("Không kiểm tra được số điện thoại");
-        return;
+    // 1. Check phone
+    const checkRes = await fetch(
+      "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: payload.phone }),
       }
+    );
 
-      const checkResult = await checkRes.json();
-      console.log("Check phone:", checkResult.response);
+    if (!checkRes.ok) {
+      throw new Error("Check phone failed");
+    }
 
-      // 2. Nếu đã tồn tại → dừng
-      if (checkResult.response === "1") {
-        alert("Số điện thoại đã tồn tại trong hệ thống");
-        console.log("Check phone:", checkResult.response);
-        return;
-      }
-        // 3. Nếu chưa tồn tại → gọi create loan
-      const res = await fetch("https://apilos.tima.vn/api/v1.0/affiliatetima/create_loan_tima", {
+    const checkResult = await checkRes.json();
+
+    if (checkResult.response === "1") {
+      alert("Số điện thoại đã tồn tại trong hệ thống");
+      return;
+    }
+
+    // 2. Create loan
+    const res = await fetch(
+      "https://apilos.tima.vn/api/v1.0/affiliatetima/create_loan_tima",
+      {
         method: "POST",
         headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWZmaWxpYXRlIERlZmF1bHQifQ.FoV43lkNp8clweHhEfiItLVoQJHMDI4rYxvXg3ay2mM",
-                "Content-Type": "application/json",
-            },
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWZmaWxpYXRlIERlZmF1bHQifQ.FoV43lkNp8clweHhEfiItLVoQJHMDI4rYxvXg3ay2mM",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(payload),
-      });
-
-      const result = await res.json();
-      console.log(result);
-
-      if (!res.ok) {
-        alert("Có lỗi xảy ra");
-        return;
       }
+    );
 
-      alert("Đăng ký thành công!");
-      closeModal();
-    } catch (err) {
-      console.error(err);
-      alert("Không thể kết nối API");
+    if (!res.ok) {
+      throw new Error("Create loan failed");
     }
-  };
+
+    alert("Đăng ký thành công!");
+    closeModal();
+
+  } catch (err) {
+    console.error(err);
+    alert("Có lỗi xảy ra, vui lòng thử lại");
+  } finally {
+    // 🔓 LUÔN MỞ KHÓA Ở ĐÂY
+    setIsSubmitting(false);
+    setBlocking(false);
+  }
+};
+
 
 
 
@@ -397,7 +390,7 @@ const LoanPage: React.FC = () => {
       <div className="mx-3 mt-6 space-y-3">
         <button
         
-       onClick={() => openModal("Vay mua ô tô")}
+       onClick={() => openModal("Vay bằng cà vẹt ô tô")}
 
         className="fixed-btn w-full bg-tima-orange text-white font-bold py-2 rounded" 
         >
@@ -464,9 +457,20 @@ const LoanPage: React.FC = () => {
                 <input
                   value={phone}
                   required
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full border rounded px-3 py-2"
+                  maxLength={10}
+                  inputMode="numeric"
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // chỉ cho số
+                    setPhone(value);
+                  }}
+                  className={`w-full border rounded px-3 py-2 ${
+                    phoneError ? "border-red-500" : ""
+                  }`}
                 />
+
+                {phoneError && (
+                  <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+                )}
               </div>
 
               {/* TỈNH THÀNH */}
