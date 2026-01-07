@@ -1,0 +1,533 @@
+.page {
+  padding: 16px 16px 96px 16px;
+}
+
+.section-container {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.zaui-list-item {
+  cursor: pointer;
+}
+/* Custom Tima colors (dựa trên code inline của bạn) */
+.bg-tima-orange {
+    background-color: #f88e51;
+}
+.hover\:bg-tima-orange-dark:hover {
+    background-color: #d83820;
+}
+.text-tima-orange {
+    color: #EF4123;
+}
+.bg-tima-orange-light {
+    background-color: #F7B1A6;
+}
+/* ĐÃ XÓA định nghĩa trùng lặp: .hover\:bg-tima-orange-dark:hover (dòng 15) */
+.focus\:ring-tima-orange:focus {
+     --tw-ring-color: #EF4123; 
+    }
+
+/* === THÊM QUY TẮC HOVER CHO KHỐI LỰA CHỌN VAY (loan-option) === */
+.loan-option:hover {
+    background-color: #f9f9f9; /* Màu nền trắng sáng nhẹ */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* === CSS CỐ ĐỊNH MODAL === */
+
+.modal-overlay {
+    /* Định vị cố định, chiếm toàn màn hình */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Nền mờ đè lên trang */
+    background-color: rgba(0, 0, 0, 0.5); 
+    
+    /* Đảm bảo nằm trên mọi thứ */
+    z-index: 1000; 
+    
+    /* Căn giữa nội dung Modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Class 'hidden' của Tailwind sẽ làm cho nó ẩn khi tải trang */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    
+    /* Giới hạn kích thước để nó nhỏ gọn ở giữa */
+    width: 90%;
+    max-width: 400px; 
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Đảm bảo Tailwind hiểu class hidden */
+.hidden {
+    display: none !important;
+}
+
+
+/* css huong */
+   .box-product .box-product-default {
+       width: 100%;
+       float: left;
+    display: flex;
+    justify-content: center;
+   }
+
+
+       .box-product .box-product-default .box-default {
+           width: 50%;
+           float: left;
+            display: flex;
+            justify-content: center;  
+            // background-color: #eaf1f3;
+            padding: 20px 0px 0px 0px; 
+       }
+
+           .box-product .box-product-default .box-default a {
+               /* border-radius: 16px; */
+               box-shadow: 0px 4px 15px 0px #0000001A;
+               background: linear-gradient(180deg, #ffccb0eb 0%, #FFFFFF 100%); 
+               padding: 10px;
+               width: 100%;
+               float: left;
+               border-radius: 15px;
+                width: 95%;
+                margin-bottom: 20px;
+           }
+
+          .content-right-install-mytima-product {
+            width: 100%;
+            float: left;
+            padding-top: 30px;
+        }
+
+             .content-right-install-mytima-product .icon-content-right-install-mytima-product {
+                width: 15%;
+                float: left;
+            }
+
+           .content-right-install-mytima-product .text-content-right-install-mytima-product {
+                width: 85%;
+                float: left;
+            }
+
+               .content-right-install-mytima-product .text-content-right-install-mytima-product h3 {
+                    font-size: 16px !important;
+                    font-weight: 600;
+                    line-height: 26px;
+                    text-align: left;
+                    width: 100%;
+                    float: left;
+                }
+
+                 .content-right-install-mytima-product .text-content-right-install-mytima-product span {
+                    font-size: 14px !important;
+                    font-weight: 300;
+                    line-height: 20px;
+                    text-align: left;
+                    color: #999999;
+                }
+
+            .content-right-install-mytima-product .box-qr-mytima {
+                background-color: #F6F6F6;
+                margin-top: 20px;
+                float: left;
+                padding: 15px 7px;
+                border-radius: 16px;
+            }
+
+                .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima {
+                    width: 70%;
+                    float: left;
+                    text-align: left;
+                    padding: 0 10px;
+                    padding-right: 50px;
+                }
+
+                 
+
+                     .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima span {
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 22px;
+                        color: #8E8E93;
+                    }
+
+                 .content-right-install-mytima-product .box-qr-mytima .right-qr-mytima {
+                    width: 30%;
+                    float: left;
+                    margin-top:7px;
+                }
+
+           .box-product .box-product-default .box-default a:hover {
+               background: linear-gradient(180deg, #FDF5EC 0%, #FFFFFF 100%);
+               border-top: 1px solid #EF592E;
+               color: #EF592E;
+           }
+
+       .box-product .box-product-default .content {
+           position: relative;
+           top: -12px;
+           width: 100%;
+           float: left;
+           border-radius: 0px 0px 24px 24px;
+           background: #FFFFFF;
+           box-shadow: 0px 4px 10px 0px #0000000D;
+           padding: 60px 30px 60px 30px;
+           border-left: 1px solid #0000000D;
+           border-right: 1px solid #0000000D;
+           border-bottom: 1px solid #0000000D;
+       }
+
+           .box-product .box-product-default .content .left {
+               width: 50%;
+               float: left;
+           }
+
+               .box-product .box-product-default .content .left .title {
+                   font-size: 24px;
+                   font-weight: 600;
+                   line-height: 32px;
+                   text-align: left;
+                   color: #EF592E;
+                   padding-bottom: 40px;
+               }
+
+               .box-product .box-product-default .content .left .text label {
+                   width: 100%;
+                   float: left;
+               }
+
+               .box-product .box-product-default .content .left .text img {
+                   width: 25px;
+               }
+
+           .box-product .box-product-default .content .right {
+               width: 50%;
+               float: left;
+           }
+
+               .box-product .box-product-default .content .right img {
+                   width: 100%;
+                   border-radius: 12px;
+               }
+
+
+       .box-product .box-product-default .box-default hr {
+           width: 100%;
+           float: left;
+           color: #F2F2F7;
+       }
+
+       .box-product .box-product-default .box-default .icon {
+           /* width: 20%;
+           float: left; */
+           margin-top: 10px;
+           height: 100px;
+       }
+
+           .box-product .box-product-default .box-default .icon img {
+               width: 100%;
+               height:100%;
+           }
+
+       .box-product .box-product-default .box-default .text {
+           width: 100%;
+           float: left;
+       }
+       .box-product .logo-tima  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+       }
+
+
+           .box-product .box-product-default .box-default .text .top {
+               font-size: 15px !important;
+               font-weight: 400;
+               line-height: 26px;
+               text-align: left;
+               color: black;
+               width: 100%;
+               float: left;
+               margin-top: 5px;
+               text-align: center;
+               font-weight: 700;;
+               
+           }
+
+           .box-product .box-product-default .box-default .text .bottom {
+               font-size: 24px !important;
+               font-weight: 600;
+               line-height: 32px;
+               text-align: left;
+               width: 100%;
+               float: left;
+           }
+
+       .box-product .box-product-default .box-button {
+           width: 100%;
+           float: left;
+           padding-bottom: 10px;
+           padding-top: 110px;
+       }
+
+           .box-product .box-product-default .box-button .btn-register {
+               padding: 10px 39px 10px 39px;
+               border-radius: 100px;
+               background: #F7753F;
+               width: 45%;
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 26px;
+               text-align: center;
+               color: white;
+           }
+
+
+
+       .box-product .box-product-default .content ul {
+           margin-left: -15px;
+       }
+
+           .box-product .box-product-default .content ul li {
+               font-size: 14px;
+               font-weight: 300;
+               line-height: 24px;
+               text-align: left;
+           }
+
+       .box-product .box-product-default .content strong {
+           font-weight: 700;
+       }
+
+       .box-step-borrow-mobile {
+        width:100%;
+        float:left;
+      background-image: url('../images/banner-step-borrow.png');
+        //   background-color: #eaf1f3;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-size: 100% 100%;
+    }
+
+        .box-step-borrow-mobile .title {
+            width: 100%;
+            float: left;
+            padding-bottom: 20px;
+            font-size: 18px !important;
+            font-weight: 600;
+            text-align: center;
+            color: white;
+        }
+
+        .box-step-borrow-mobile .left {
+            width: 50%;
+            float: left;
+            padding-left:10px;
+        }
+
+            .box-step-borrow-mobile .left .icon {
+                width: 20%;
+                float: left;
+            }
+
+                .box-step-borrow-mobile .left .icon img {
+                    width: 20px;
+                }
+
+            .box-step-borrow-mobile .left .text {
+                width: 80%;
+                float: left;
+            }
+
+                .box-step-borrow-mobile .left .text h3 {
+                    font-size: 15px;
+                    color: gray;
+                    margin-bottom: 0px;
+                    font-weight: 700;
+                }
+
+                .box-step-borrow-mobile .left .text .desc-content-box-step-borrow {
+                    margin-top: 5px;
+                    font-size: 12px;
+                    color: gray !important;
+                    margin-bottom: 0px !important;
+                }
+                
+        .box-step-borrow-mobile .right {
+            width: 50%;
+            float: left
+        }
+
+            .box-step-borrow-mobile .right img {
+                width: 100%;
+            }
+             .box-install-mytima-mobile {
+     width: 100%;
+     float: left;
+     background: white;
+     padding:10px;
+     padding-top:20px;
+ }
+ .w-100-l{
+    width:100%;
+    float:left;
+ }
+
+     .box-install-mytima-mobile .title {
+         width: 100%;
+         float: left;
+         font-size: 18px;
+         font-weight: 600;
+         text-align: center;
+     }
+
+
+     .box-install-mytima-mobile .content {
+         width: 100%;
+         float: left;
+         padding-top: 20px;
+     }
+
+     .box-install-mytima-mobile .icon {
+         width: 20%;
+         float: left;
+     }
+
+     .box-install-mytima-mobile .text {
+         width: 80%;
+         float: left;
+     }
+
+         .box-install-mytima-mobile .text h3 {
+             font-size: 14px;
+             font-weight: 600;
+             text-align: left;
+             width: 100%;
+             float: left;
+         }
+
+         .box-install-mytima-mobile .text span {
+             font-size: 12px;
+             font-weight: 300;
+             text-align: left;
+             color: #999999;
+         }
+
+.fixed-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: #F97316; /* tima-orange */
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 999;
+}
+
+
+
+
+
+
+.colorTima {
+    color: #F7753F !important;
+}
+
+@media screen and (min-height: 480px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 150px;
+    }
+}
+@media screen and (min-height: 600px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 150px;
+    }
+}
+@media screen and (min-height: 800px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 170px;
+    }
+}
+@media screen and (min-height: 1000px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 250px;
+    } 
+    // .box-product .box-product-default .box-default .icon .vay-mua-oto{
+    //    margin-top: 50px
+    // }  
+    .box-install-mytima-mobile .content{
+        width: 50%;
+        margin: 0px auto;
+    }
+    .box-install-mytima-mobile .icon{
+        margin-bottom: 20px;
+    }
+    .box-install-mytima-mobile .text{
+        margin-bottom: 20px;
+    }
+    .box-install-mytima-mobile .title{
+        margin-bottom: 25px;
+    }
+    .content-right-install-mytima-product{
+            width: 100%;
+            padding-top: 30px;
+            margin: 0 auto;
+            float:none;
+    }
+    .content-right-install-mytima-product .box-qr-mytima{
+        width:100%;
+    }
+    .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima{
+        width: 35%;
+        margin-left: 20%;
+    }
+         .box-product .box-product-default .box-default .text .top {
+        margin-top: 90px;
+    }
+    
+}
+
+@media screen and (min-height: 1100px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 280px;
+    }
+     .box-product .box-product-default .box-default .text .top {
+        margin-top: 50px;
+    }
+    
+}
+@media screen and (min-height: 1300px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 350px;
+    }
+    .box-product .box-product-default .box-default .text .top {
+        margin-top: 50px;
+    }
+}
+@media screen and (min-height: 1500px) {
+    .box-product .box-product-default .box-default .icon {
+        height: 520px;
+    }
+}
