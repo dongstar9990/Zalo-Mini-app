@@ -82,97 +82,92 @@
 
 
 /* css huong */
-   .box-product .box-product-default {
-       width: 100%;
-       float: left;
-    display: flex;
-    justify-content: center;
-   }
+ .right-content-product-header {
+    width: 100%;
+    float: left;
+    padding: 10px 20px;
+    background-size: 100% 100%;
+    background-color: #e9e9e9;
+    background-blend-mode: multiply;
+    padding-top: 20px
+
+    
+}
+
+ .right-content-product-header .box-register-loan {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff
+}
+
+ .right-content-product-header .box-register-loan .title-box-register-loan {
+font-size: 22px;
+    font-weight: 650;
+    line-height: 40.48px;
+    color: #000;
+    text-align: center;
+}
+
+ .right-content-product-header .box-register-loan .desc-box-register-loan {
+ font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #545151;
+    text-align: center;
+}
+
+ .right-content-product-header .box-register-loan .box-form-register-loan {
+    width: 100%;
+    float: left;
+    margin-top: 20px
+}
+
+ .right-content-product-header .box-register-loan .box-form-register-loan .input-register-loan {
+    display: block;
+    width: 100%;
+    padding: .65rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #495057;
+    background: #ffffff33;
+    background-image: none;
+    background-clip: padding-box;
+    border: .5px solid #bdbdbd;
+    border-radius: 8px;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.right-content-product-header .box-register-loan .box-form-register-loan .input-register-loan::placeholder {
+    color: #bdbdbd
+}
+
+ .right-content-product-header .box-register-loan .box-form-register-loan .lbl-rules {
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+}
+
+  .right-content-product-header .box-register-loan .box-form-register-loan .btn-register {
+    width: 100%;
+    border-radius: 40px;
+    background: linear-gradient(147.63deg,#ff8e4f 0%,#ef592e 100%);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22.77px;
+    text-align: center;
+    color: #fff;
+    padding: .6rem 1rem;
+    margin-top:10px;
+}
 
 
-       .box-product .box-product-default .box-default {
-           width: 50%;
-           float: left;
-            display: flex;
-            justify-content: center;  
-            background-color: #eaf1f3;
-            padding: 20px 0px 0px 0px; 
-       }
 
-           .box-product .box-product-default .box-default a {
-               /* border-radius: 16px; */
-               box-shadow: 0px 4px 15px 0px #0000001A;
-               background: linear-gradient(180deg, #ffccb0eb 0%, #FFFFFF 100%); 
-               padding: 10px;
-               width: 100%;
-               float: left;
-               border-radius: 15px 15px 0 0;
-                width: 95%;
-           }
-
-          .content-right-install-mytima-product {
-            width: 100%;
-            float: left;
-            padding-top: 30px;
-        }
-
-             .content-right-install-mytima-product .icon-content-right-install-mytima-product {
-                width: 15%;
-                float: left;
-            }
-
-           .content-right-install-mytima-product .text-content-right-install-mytima-product {
-                width: 85%;
-                float: left;
-            }
-
-               .content-right-install-mytima-product .text-content-right-install-mytima-product h3 {
-                    font-size: 16px !important;
-                    font-weight: 600;
-                    line-height: 26px;
-                    text-align: left;
-                    width: 100%;
-                    float: left;
-                }
-
-                 .content-right-install-mytima-product .text-content-right-install-mytima-product span {
-                    font-size: 14px !important;
-                    font-weight: 300;
-                    line-height: 20px;
-                    text-align: left;
-                    color: #999999;
-                }
-
-            .content-right-install-mytima-product .box-qr-mytima {
-                background-color: #F6F6F6;
-                margin-top: 20px;
-                float: left;
-                padding: 15px 7px;
-                border-radius: 16px;
-            }
-
-                .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima {
-                    width: 70%;
-                    float: left;
-                    text-align: left;
-                    padding: 0 10px;
-                    padding-right: 50px;
-                }
-
-                 
-
-                     .content-right-install-mytima-product .box-qr-mytima .left-qr-mytima span {
-                        font-weight: 400;
-                        font-size: 14px;
-                        line-height: 22px;
-                        color: #8E8E93;
-                    }
-
-                 .content-right-install-mytima-product .box-qr-mytima .right-qr-mytima {
-                    width: 30%;
-                    float: left;
-                    margin-top:7px;
-                }
 
            .box-product .box-product-default .box-default a:hover {
                background: linear-gradient(180deg, #FDF5EC 0%, #FFFFFF 100%);
