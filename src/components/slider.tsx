@@ -9,18 +9,23 @@ import thuTucToiGian from "../pages/images/thu-tuc-toi-gian.png";
 const imgHome = [
   {
     src: duyetVayNhanh,
-    detail: "Lãi suất từ ",
-    title: "13%/NĂM"
+    detail: "Vay online trong ",
+    title: "2 GIỜ"
   },
   {
     src: baoMatThongTin,
-    detail: "Hạn mức đến",
-    title: "2 TỶ "
+    detail: "Hạn mức",
+    title: "3 TRIỆU - 2 TỶ "
   },
   {
     src: hanMucVayLon,
-    detail: "Trả góp đến",
-    title: "36 THÁNG "
+    detail: "Kỳ hạn",
+    title: "3 - 36 THÁNG "
+  },
+    {
+    src: thuTucToiGian,
+    detail: "Không",
+    title: "kiểm tra CIC "
   },
 
 ];

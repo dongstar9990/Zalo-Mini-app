@@ -106,9 +106,14 @@ const LoanPage: React.FC = () => {
     setIsSubmitting(true);
     setBlocking(true);
     try {
+          let productID;
+          if (loanType === "Vay bằng cà vẹt ô tô") productID = 8;
+          else if (loanType === "Vay mua ô tô") productID = 31;
+          else if (loanType === "Vay bằng cà vẹt xe máy") productID = 2;
+
 
       const payload = {
-        productId: 8,
+        productId: productID,
         fullName: name,
         phone,
         provinceName: province,
@@ -286,7 +291,6 @@ const LoanPage: React.FC = () => {
                     required
                     onChange={(e) => setProvince(e.target.value)}
                     className="w-full border rounded px-3 py-2"
-                    
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
                     <option value="An Giang">An Giang</option>
@@ -352,6 +356,25 @@ const LoanPage: React.FC = () => {
                     <option value="Vĩnh Phúc">Vĩnh Phúc</option>
                     <option value="Yên Bái">Yên Bái</option>
                 </select>
+              </div>
+              <div className="box-form-register-loan">
+                <select
+                    className="w-full border rounded px-3 py-2 loan-option"
+                    value={loanType}
+                    onChange={(e) => {
+                      setLoanType(e.target.value);
+                      openModal(e.target.value);
+                    }}
+                    required
+                  >
+                  <option value="" disabled>
+                    Chọn hình thức vay
+                  </option>
+                  <option value="Vay bằng cà vẹt xe máy">Vay đến 30 triệu</option>
+                  <option value="Vay bằng cà vẹt ô tô">Vay đến 2 tỷ bằng đăng ký cavet/ô tô</option>
+                   <option value="Vay mua ô tô">Vay mua ô tô trả góp</option>
+                </select>
+
               </div>
               
               <div className="box-form-register-loan m-l-10">
@@ -420,7 +443,6 @@ const LoanPage: React.FC = () => {
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
             </h2>
-            <span className="italic font-normal text-sm">Địa chỉ vay bằng đăng ký/ cavet uy tín số 1 Việt Nam</span>
       </div>
       <TextSlider />
     </div>
