@@ -10,7 +10,7 @@ const imgHome = [
   {
     src: duyetVayNhanh,
     detail: "Lãi suất từ ",
-    title: "14%/NĂM"
+    title: "13%/NĂM"
   },
   {
     src: baoMatThongTin,
@@ -22,11 +22,7 @@ const imgHome = [
     detail: "Trả góp đến",
     title: "36 THÁNG "
   },
-  {
-    src: thuTucToiGian,
-    detail: "Kết nối ",
-    title: "SHOWROOM LỚN"
-  },
+
 ];
 
 

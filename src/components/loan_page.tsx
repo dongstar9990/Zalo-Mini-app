@@ -108,7 +108,7 @@ const LoanPage: React.FC = () => {
     try {
 
       const payload = {
-        productId: 31,
+        productId: 8,
         fullName: name,
         phone,
         provinceName: province,
@@ -420,7 +420,7 @@ const LoanPage: React.FC = () => {
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
             </h2>
-            <span className="italic font-normal text-sm">Hỗ trợ khách hàng muốn vay mua ô tô nhưng dưới chuẩn ngân </span>
+            <span className="italic font-normal text-sm">Địa chỉ vay bằng đăng ký/ cavet uy tín số 1 Việt Nam</span>
       </div>
       <TextSlider />
     </div>
