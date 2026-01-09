@@ -9,23 +9,23 @@ import thuTucToiGian from "../pages/images/thu-tuc-toi-gian.png";
 const imgHome = [
   {
     src: duyetVayNhanh,
-    detail: "Hạn mức",
-    title: "3 Triệu - 2 Tỷ"
+    detail: "Lãi suất từ ",
+    title: "14%/NĂM"
   },
   {
     src: baoMatThongTin,
-    detail: " Kỳ hạn",
-    title: "3 - 36 Tháng"
+    detail: "Hạn mức đến",
+    title: "2 TỶ "
   },
   {
     src: hanMucVayLon,
-    detail: "Nhận tiền",
-    title: "Chỉ trong 2 giờ"
+    detail: "Trả góp đến",
+    title: "36 THÁNG "
   },
   {
     src: thuTucToiGian,
-    detail: "CIC",
-    title: "KHÔNG KIỂM TRA"
+    detail: "Kết nối ",
+    title: "SHOWROOM LỚN"
   },
 ];
 
