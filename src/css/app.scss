@@ -82,88 +82,148 @@
 
 
 /* css huong */
- .right-content-product-header {
-    width: 100%;
-    float: left;
-    padding: 10px 20px;
-    background-size: 100% 100%;
-    background-color: #e9e9e9;
-    background-blend-mode: multiply;
-    padding-top: 20px
-
-    
+ .boxFormValuation {
+    text-align: left;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff
 }
 
- .right-content-product-header .box-register-loan {
+ .boxFormValuation button {
     width: 100%;
+    padding: 5px 20px 5px 20px;
+    gap: 10px;
+    border-radius: 40px;
+    color: #fff;
+    background: linear-gradient(147.63deg,#ff8e4f 0%,#ef592e 100%);
+    border: none;
+    font-size: 18px;
+    margin-top: 10px
+}
+ .boxFormValuation label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #333
+}
+
+.boxBannerValuation-mobile {
+    text-align: center;
+    padding: 20px 10px 40px 10px;
+    background-image: url('../images/banner/background-aboutus.png');
+    background-size: 100% 100%;
+    position: relative
+}
+
+.boxFormValuation .title {
+    width: 100%;
+    padding: 20px 23px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: normal;
+    color: #fff
+}
+
+.boxFormValuation p {
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 50px
+}
+
+.boxFormValuation .img-oto {
+    width: 30%;
+    bottom: -52px;
+    right: 19%;
+    position: absolute
+}
+
+.left-model-valuation p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+    margin: 0
+}
+
+.left-model-valuation-mobile .infor-car {
+    padding: 3px 20px 20px 20px;
+    background-color: #f2f2f2;
+    margin-right: 30px;
+    border-radius: 16px;
+    width: 100%;
+    float: left
+}
+
+.left-model-valuation-mobile .infor-car p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #828282;
+    width: 50%;
     float: left;
     margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 8px;
-    background: #fff
-}
-
- .right-content-product-header .box-register-loan .title-box-register-loan {
-font-size: 22px;
-    font-weight: 650;
-    line-height: 40.48px;
-    color: #000;
-    text-align: center;
-}
-
- .right-content-product-header .box-register-loan .desc-box-register-loan {
- font-size: 15px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #545151;
-    text-align: center;
-}
-
- .right-content-product-header .box-register-loan .box-form-register-loan {
-    width: 100%;
-    float: left;
-    margin-top: 20px
-}
-
- .right-content-product-header .box-register-loan .box-form-register-loan .input-register-loan {
-    display: block;
-    width: 100%;
-    padding: .65rem 1.25rem;
-    font-size: 1rem;
-    line-height: 1.25;
-    color: #495057;
-    background: #ffffff33;
-    background-image: none;
-    background-clip: padding-box;
-    border: .5px solid #bdbdbd;
-    border-radius: 8px;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-}
-
-.right-content-product-header .box-register-loan .box-form-register-loan .input-register-loan::placeholder {
-    color: #bdbdbd
-}
-
- .right-content-product-header .box-register-loan .box-form-register-loan .lbl-rules {
-    margin-left: 10px;
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 24px;
     text-align: left;
+    margin-bottom: 10px
 }
 
-  .right-content-product-header .box-register-loan .box-form-register-loan .btn-register {
-    width: 100%;
+.left-model-valuation-mobile .infor-car span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #333
+}
+
+.left-model-valuation-mobile button {
     border-radius: 40px;
-    background: linear-gradient(147.63deg,#ff8e4f 0%,#ef592e 100%);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22.77px;
-    text-align: center;
     color: #fff;
-    padding: .6rem 1rem;
-    margin-top:10px;
+    background: linear-gradient(147.63deg,#ff8e4f 0%,#ef592e 100%);
+    border: none;
+    font-size: 18px;
+    padding: 6px;
+    margin-top: 10px;
+    width: 92%
+}
+
+.right-model-valuation-mobile .dinh-gia {
+    padding: 10px;
+    background-color: #fdf5ec;
+    margin-bottom: 11px;
+    margin-right: 8px;
+    border-radius: 10px
+}
+
+.right-model-valuation-mobile label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333
+}
+
+.right-model-valuation-mobile p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #828282;
+    margin: 6px 0;
+    width: 100%
+}
+
+.right-model-valuation-mobile span {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    background: linear-gradient(180deg,#ff8e4f,#ef592e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent
+}
+
+.boxBannerValuation-mobile .modal-dialog {
+    top: 14% !important
 }
 
 

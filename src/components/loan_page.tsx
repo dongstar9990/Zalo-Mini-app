@@ -227,214 +227,169 @@ const LoanPage: React.FC = () => {
           </div>
  
           {/* from đăng ký vay */}
-          <form className="right-content-product-header" style={{ backgroundImage: `url(${img})` }} onSubmit={handleSubmit}>
-            <div className="box-register-loan">
-              <div className="title-box-register-loan">
+          <div className="right-content-product-header" style={{ backgroundImage: `url(${img})` }}>
+            <div className="title-box-register-loan">
                 <label>
-                  Bạn đang <span className="colorTima">cần một khoản</span> vay?
+                  <span className="colorTima">Định Giá Xe</span> Đã Qua Sử Dụng
                 </label>
-              </div>
-              <div className="desc-box-register-loan">
-                <label>
+                <p>
                   500,000+ người vay thành công, Tima không thu bất kỳ khoản tiền nào
                   trước khi giải ngân.
-                </label>
-              </div>
-              {/* Input họ tên */}
-              <div className="box-form-register-loan">
-                <input
-                  value={name}
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                   placeholder="Nhập họ và tên *"
-                  className="w-full border rounded px-3 py-2"
-                />
-              </div>
-
-              {/* Input số điện thoại */}
-              <div className="box-form-register-loan">
-                <input
-                  value={phone}
-                  required
-                  placeholder="Nhập số điện thoại *"
-                  inputMode="numeric"
-                  onChange={(e) => {
-                  const value = e.target.value;
-                  setPhone(value);
-
-                  if (!/^\d*$/.test(value)) {
-                    setPhoneError("Chỉ được nhập số");
-                  } 
-                  else if (value.length > 10) {
-                    setPhoneError("Số điện thoại tối đa 10 số");
-                  } 
-                  else if (value.length === 10 && !PHONE_REGEX.test(value)) {
-                    setPhoneError("Số điện thoại không hợp lệ");
-                  } 
-                  else {
-                    setPhoneError("");
-                  }
-                }}
-                  className={`w-full border rounded px-3 py-2 ${
-                    phoneError ? "border-red-500" : ""
-                  }`}
-                />
-
-                {phoneError && (
-                  <p className="text-red-500 text-sm mt-1">{phoneError}</p>
-                )}
-              </div>
-
-              {/* Select tỉnh thành */}
-              <div className="box-form-register-loan">
-                <select
-                    required
-                    onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
-                    >
-                    <option value="">-- Chọn tỉnh/thành --</option>
-                    <option value="An Giang">An Giang</option>
-                    <option value="Bà Rịa – Vũng Tàu">Bà Rịa – Vũng Tàu</option>
-                    <option value="Bắc Giang">Bắc Giang</option>
-                    <option value="Bắc Kạn">Bắc Kạn</option>
-                    <option value="Bạc Liêu">Bạc Liêu</option>
-                    <option value="Bắc Ninh">Bắc Ninh</option>
-                    <option value="Bến Tre">Bến Tre</option>
-                    <option value="Bình Định">Bình Định</option>
-                    <option value="Bình Dương">Bình Dương</option>
-                    <option value="Bình Phước">Bình Phước</option>
-                    <option value="Bình Thuận">Bình Thuận</option>
-                    <option value="Cà Mau">Cà Mau</option>
-                    <option value="Cần Thơ">Cần Thơ</option>
-                    <option value="Đà Nẵng">Đà Nẵng</option>
-                    <option value="Đắk Lắk">Đắk Lắk</option>
-                    <option value="Đắk Nông">Đắk Nông</option>
-                    <option value="Điện Biên">Điện Biên</option>
-                    <option value="Đồng Nai">Đồng Nai</option>
-                    <option value="Đồng Tháp">Đồng Tháp</option>
-                    <option value="Gia Lai">Gia Lai</option>
-                    <option value="Hà Giang">Hà Giang</option>
-                    <option value="Hà Nam">Hà Nam</option>
-                    <option value="Hà Nội">Hà Nội</option>
-                    <option value="Hà Tĩnh">Hà Tĩnh</option>
-                    <option value="Hải Dương">Hải Dương</option>
-                    <option value="Hải Phòng">Hải Phòng</option>
-                    <option value="Hậu Giang">Hậu Giang</option>
-                    <option value="Hòa Bình">Hòa Bình</option>
-                    <option value="Hưng Yên">Hưng Yên</option>
-                    <option value="Khánh Hòa">Khánh Hòa</option>
-                    <option value="Kiên Giang">Kiên Giang</option>
-                    <option value="Kon Tum">Kon Tum</option>
-                    <option value="Lai Châu">Lai Châu</option>
-                    <option value="Lâm Đồng">Lâm Đồng</option>
-                    <option value="Lạng Sơn">Lạng Sơn</option>
-                    <option value="Lào Cai">Lào Cai</option>
-                    <option value="Long An">Long An</option>
-                    <option value="Nam Định">Nam Định</option>
-                    <option value="Nghệ An">Nghệ An</option>
-                    <option value="Ninh Bình">Ninh Bình</option>
-                    <option value="Ninh Thuận">Ninh Thuận</option>
-                    <option value="Phú Thọ">Phú Thọ</option>
-                    <option value="Phú Yên">Phú Yên</option>
-                    <option value="Quảng Bình">Quảng Bình</option>
-                    <option value="Quảng Nam">Quảng Nam</option>
-                    <option value="Quảng Ngãi">Quảng Ngãi</option>
-                    <option value="Quảng Ninh">Quảng Ninh</option>
-                    <option value="Quảng Trị">Quảng Trị</option>
-                    <option value="Sóc Trăng">Sóc Trăng</option>
-                    <option value="Sơn La">Sơn La</option>
-                    <option value="Tây Ninh">Tây Ninh</option>
-                    <option value="Thái Bình">Thái Bình</option>
-                    <option value="Thái Nguyên">Thái Nguyên</option>
-                    <option value="Thanh Hóa">Thanh Hóa</option>
-                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
-                    <option value="Tiền Giang">Tiền Giang</option>
-                    <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                    <option value="Trà Vinh">Trà Vinh</option>
-                    <option value="Tuyên Quang">Tuyên Quang</option>
-                    <option value="Vĩnh Long">Vĩnh Long</option>
-                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
-                    <option value="Yên Bái">Yên Bái</option>
-                </select>
-              </div>
-              <div className="box-form-register-loan">
-                <select
-                    className="w-full border rounded px-3 py-2 loan-option"
-                    value={loanType}
-                    onChange={(e) => {
-                      setLoanType(e.target.value);
-                      openModal(e.target.value);
-                    }}
-                    required
-                  >
-                  <option value="" disabled>
-                    Chọn hình thức vay
-                  </option>
-                  <option value="Vay bằng cà vẹt xe máy">Vay đến 30 triệu</option>
-                  <option value="Vay bằng cà vẹt ô tô">Vay đến 2 tỷ bằng đăng ký cavet/ô tô</option>
-                   <option value="Vay mua ô tô">Vay mua ô tô trả góp</option>
-                </select>
-
-              </div>
+                </p>
               
-              <div className="box-form-register-loan m-l-10">
-                <input
-                  type="checkbox"
-                  checked={agreeTerms}
-                  onChange={(e) => setAgreeTerms(e.target.checked)}
-                  required
-                />
-                <span className="text-sm text-gray-700 pl-2">
-                  Tôi đồng ý với{" "}
-                  <span
-                    onClick={() =>
-                      openWebview({
-                        url: "https://cdn.tima.vn/file-pdf/20240509_DIEU_KHOAN_VA_DIEU_KIEN_TIMA.pdf",
-                      })
-                    }
-                    className="text-orange-500 font-bold hover:text-orange-600 underline"
-                  >
-                    điều khoản và điều kiện
-                  </span>{" "}
-                  của Tima
-                </span>
-                <button
-                type="submit"
-                className="btn btn-register"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2 justify-center w-full">
-                    <svg
-                      className="animate-spin h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                      ></path>
-                    </svg>
-                    Đang xử lý...
-                  </span>
-                ) : (
-                  "Đăng ký vay"
-                )}
-              </button>
               </div>
-             
+              {/* {form định giá xe} */}
+        <form className="boxFormValuation w-100-l">
+          <div className="choose-vehicle w-100-l">
+            <div className="w-100-l">
+              <div className="w-50-l">
+                <label>Chọn phương tiện</label>
+              </div>
+              <div className="w-50-l text-center">
+                <input
+                  type="radio"
+                  id="rd_Car"
+                  name="radio_choose_car"
+                  defaultValue={8}
+                  // defaultChecked="checked"
+                />
+                <label htmlFor="radio_choose_car" className="m-l-10">
+                  Ô tô
+                </label>
+                <br />
+              </div>
             </div>
-          </form>
+          </div>
+          <div className="w-100-l p-t-10">
+            <label>Hãng xe</label>
+            <select
+              className="custom-select select2-hidden-accessible"
+              id="sl_Brand"
+              style={{ width: "100%" }}
+              // onchange="Lib.GetYearCar(this.value, '#sl_Year', '#sl_Vehicles')"
+              tabIndex={-1}
+              aria-hidden="true"
+            ></select>
+            <span
+              className="select2 select2-container select2-container--default"
+              dir="ltr"
+              style={{ width: "100%" }}
+            >
+              <span className="selection">
+                <span
+                  className="select2-selection select2-selection--single"
+                  role="combobox"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  tabIndex={0}
+                  aria-labelledby="select2-sl_Brand-container"
+                >
+                  <span
+                    className="select2-selection__rendered"
+                    id="select2-sl_Brand-container"
+                  >
+                    <span className="select2-selection__placeholder">Hãng xe *</span>
+                  </span>
+                  <span className="select2-selection__arrow" role="presentation">
+                    <b role="presentation" />
+                  </span>
+                </span>
+              </span>
+              <span className="dropdown-wrapper" aria-hidden="true" />
+            </span>
+          </div>
+          <div className="w-100-l p-t-10">
+            <label>Năm sản xuất</label>
+            <select
+              className="custom-select select2-hidden-accessible"
+              id="sl_Year"
+              style={{ width: "100%" }}
+              // onchange="Lib.GetVehiclesCar(this.value, '#sl_Brand', '#sl_Vehicles')"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <option />
+            </select>
+            <span
+              className="select2 select2-container select2-container--default"
+              dir="ltr"
+              style={{ width: "100%" }}
+            >
+              <span className="selection">
+                <span
+                  className="select2-selection select2-selection--single"
+                  role="combobox"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  tabIndex={0}
+                  aria-labelledby="select2-sl_Year-container"
+                >
+                  <span
+                    className="select2-selection__rendered"
+                    id="select2-sl_Year-container"
+                  >
+                    <span className="select2-selection__placeholder">
+                      Năm sản xuất *
+                    </span>
+                  </span>
+                  <span className="select2-selection__arrow" role="presentation">
+                    <b role="presentation" />
+                  </span>
+                </span>
+              </span>
+              <span className="dropdown-wrapper" aria-hidden="true" />
+            </span>
+          </div>
+          <div className="w-100-l p-t-10">
+            <label>Tên xe</label>
+            <select
+              className="custom-select select2-hidden-accessible"
+              id="sl_Vehicles"
+              style={{ width: "100%" }}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <option />
+            </select>
+            <span
+              className="select2 select2-container select2-container--default"
+              dir="ltr"
+              style={{ width: "100%" }}
+            >
+              <span className="selection">
+                <span
+                  className="select2-selection select2-selection--single"
+                  role="combobox"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  tabIndex={0}
+                  aria-labelledby="select2-sl_Vehicles-container"
+                >
+                  <span
+                    className="select2-selection__rendered"
+                    id="select2-sl_Vehicles-container"
+                  >
+                    <span className="select2-selection__placeholder">Tên xe *</span>
+                  </span>
+                  <span className="select2-selection__arrow" role="presentation">
+                    <b role="presentation" />
+                  </span>
+                </span>
+              </span>
+              <span className="dropdown-wrapper" aria-hidden="true" />
+            </span>
+          </div>
+          <div className="w-100-l p-t-10">
+            {/* <button type="button" onclick="HandlePrice(this, '#_i_loading_valuation')">
+              Định giá xe <i id="_i_loading_valuation" className="" />
+            </button> */}
+            <button type="button" >
+              Định giá xe <i id="_i_loading_valuation" className="" />
+            </button>
+          </div>
+        </form>
+
+          </div>
 
         </div>
       </div>
