@@ -82,13 +82,18 @@
 
 
 /* css huong */
- .boxFormValuation {
+.fix-dang-ky-vay{
+    background: linear-gradient(180deg, #ff8e4f 0%, #ef592e 100%) !important;
+}
+.boxFormValuation {
     text-align: left;
     padding: 20px;
     border-radius: 5px;
-    background-color: #fff
 }
-
+.w-50-l{
+    width: 50%;
+    float: left
+}
  .boxFormValuation button {
     width: 100%;
     padding: 5px 20px 5px 20px;
@@ -101,10 +106,10 @@
     margin-top: 10px
 }
  .boxFormValuation label {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 16px;
     line-height: 26px;
-    color: #333
+    color: #333333
 }
 
 .boxBannerValuation-mobile {
