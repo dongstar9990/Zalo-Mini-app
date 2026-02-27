@@ -15,10 +15,7 @@ import icon02 from '../pages/images/icon-02.png';
 import icon03 from '../pages/images/icon-03.png';
 import icon04 from '../pages/images/icon-04.png';
 
-import qrMyTima from '../pages/images/qr-mytima.png';
 
-import downloadAppImg from '../pages/images/icon-download.png';
-import zmp from "zmp-sdk";
 import { openWebview } from "zmp-sdk";
 
 const LoanPage: React.FC = () => {
