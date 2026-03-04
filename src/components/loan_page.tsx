@@ -54,7 +54,7 @@ const LoanPage: React.FC = () => {
 
     // 1. Check phone
     const checkRes = await fetch(
-      "https://n8n.anntech.one/webhook/check_exis_phonenb_los_test",
+      "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
