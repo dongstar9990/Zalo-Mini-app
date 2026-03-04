@@ -87,8 +87,13 @@ const LoanPage: React.FC = () => {
     );
     if (!res.ok) {
       throw new Error("Create loan failed");
-    }
 
+    }
+      // ✅ Reset form khi thành công
+      setEmail("");
+      setPhone("");
+      setName("");
+      setRefphone("");
     alert("Đăng ký thành công!");
 
   } catch (err) {
