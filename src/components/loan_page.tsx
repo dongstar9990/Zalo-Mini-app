@@ -52,26 +52,26 @@ const LoanPage: React.FC = () => {
       SourceCreated: "zalo-oa",
     };
 
-    // 1. Check phone
-    const checkRes = await fetch(
-      "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: payload.Phone }),
-      }
-    );
+    // // 1. Check phone
+    // const checkRes = await fetch(
+    //   "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
+    //   {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ phone: payload.Phone }),
+    //   }
+    // );
 
-    if (!checkRes.ok) {
-      throw new Error("Check phone failed");
-    }
+    // if (!checkRes.ok) {
+    //   throw new Error("Check phone failed");
+    // }
 
-    const checkResult = await checkRes.json();
+    // const checkResult = await checkRes.json();
 
-    if (checkResult.response === "1") {
-      alert("Số điện thoại đã tồn tại trong hệ thống");
-      return;
-    }
+    // if (checkResult.response === "1") {
+    //   alert("Số điện thoại đã tồn tại trong hệ thống");
+    //   return;
+    // }
 
     // 2. Create loan
     const res = await fetch(
