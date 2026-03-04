@@ -14,7 +14,7 @@ function Invest() {
 
   return (
     <div className="box-invest">
- <div className="box-invest-content w-full flex justify-center items-center gap-2 mt-4 p-2">
+ <div className="box-invest-content w-full flex justify-center items-center gap-2 p-2">
 
         {/* BUTTON */}
         <button onClick={() => {
@@ -61,7 +61,7 @@ function Invest() {
       </div>
        {/* NỘI DUNG XỔ XUỐNG */}
         {openMoney && (
-          <div className="w-full  h-full  p-[12px] bg-gray-100 rounded shadow text-left">
+          <div className="w-full  h-full  p-[12px] bg-gray-100 rounded shadow text-left fade-in-invest">
             <p className="text-base font-bold mb-2">Lợi nhuận đến 15,5%/năm</p>
             <div className="text-sm flex gap-2 h-full mb-2">
                 <img
@@ -96,7 +96,7 @@ function Invest() {
                     />
                     <p className="text-sm  text-black "><span className=" font-bold "> Lợi nhuận hấp dẫn:</span> TIMA kết nối đa dạng nhu cầu vay, giúp nhà đầu tư linh hoạt lựa chọn thời gian đầu tư và tăng tốc hiệu quả sinh lời.</p>
             </div>
-            <div className="text-sm flex gap-2 mt-2 items-center justify-center">
+            <div className="text-sm flex gap-2 mt-2 items-center justify-center mb-2">
                 <img
                     src={iconRisk}
                     alt="icon"
@@ -107,7 +107,7 @@ function Invest() {
           </div>
         )}
         {openSalaryAdvance && (
-         <div className="w-full  h-full  p-[12px] bg-gray-100 rounded shadow text-left">
+         <div className="w-full  h-full  p-[12px] bg-gray-100 rounded shadow text-left fade-in-invest">
             <p className="text-base font-bold mb-2">Tài trợ Ứng Lương - Lợi nhuận lên tới 11%/năm</p>
             <div className="text-sm flex gap-2 h-full mb-2">
                 <img
@@ -134,7 +134,7 @@ function Invest() {
                     />
                     <span className="flex font-bold ">Kỳ hạn linh hoạt:</span> <p className="text-sm  text-black ">1 – 45 ngày, dễ dàng tái đầu tư.</p>
             </div>
-            <div className="text-sm flex gap-2 mt-2 bg-[#ffd0b363] rounded items-center justify-center">
+            <div className="text-sm flex gap-2 mt-2 bg-[#ffd0b363] rounded items-center justify-center mb-2">
                 <img
                     src={iconProfit}
                     alt="icon"

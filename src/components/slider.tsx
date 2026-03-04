@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import duyetVayNhanh from "../pages/images/img-banner.jpg";
+import duyetVayNhanh from "../pages/images/img-banner-1.png";
 import baoMatThongTin from "../pages/images/img-banner-2.png";
 
 
@@ -18,13 +18,13 @@ const imgHome = [
 
 function TextSlider() {
     var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 1800,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
 
     };

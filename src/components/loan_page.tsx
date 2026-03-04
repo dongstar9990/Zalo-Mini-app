@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/app.scss"; // import CSS custom nếu có
 
 import logoTima from "../pages/images/logo_tima-invest.png";
+import logoTimaDauTu from "../pages/images/logo_tima-dau-tu.png";
 
 import { openWebview } from "zmp-sdk";
 import { TextSlider } from "./slider";
@@ -108,20 +109,20 @@ const LoanPage: React.FC = () => {
         <div className="">
           <div className="logo-tima text-center w-100-l">
             <div style={{ width: "30%" }}>
-              <img src={logoTima} alt="Logo Tima" />
+              <img src={logoTimaDauTu} alt="Logo Tima" />
             </div>
           </div>
 
           {/* Wrapper: banner + slider để dots đè lên banner */}
-          <div className="relative">
+          <div className="">
             {/* Banner */}
-            <div className="p-4 text-white text-center font-semibold text-lg bg-tima-orange shadow"
+            <div className="p-4 text-white text-center font-semibold text-lg bg-[#f88e51d1] shadow"
               style={{ textShadow: "2px 2px 4px rgb(22 2 2 / 88%)" }}>
               Đăng ký Online - giải ngân trong 2 giờ
             </div>
 
             {/* Slider đè lên banner (dots nằm trên vùng banner) */}
-            <div className="relative -mt-6 z-10">
+            <div className="">
               <TextSlider />
             </div>
           </div>
