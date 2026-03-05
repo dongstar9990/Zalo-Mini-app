@@ -75,11 +75,11 @@ const LoanPage: React.FC = () => {
 
     // 2. Create loan
     const res = await fetch(
-      "/api/api/v1.0/LenderInformation/create",
+      "https://crmlenderapi.tima.vn/api/v1.0/LenderInformation/create",
       {
         method: "POST",
         headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
+          // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
