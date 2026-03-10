@@ -52,34 +52,34 @@ const LoanPage: React.FC = () => {
       SourceCreated: "zalo-oa",
     };
 
-    // 1. Check phone
-    const checkRes = await fetch(
-      "https://n8n.anntech.one/webhook/check_exis_phonenb_los_test",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: payload.Phone }),
-      }
-    );
+    // // 1. Check phone
+    // const checkRes = await fetch(
+    //   "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
+    //   {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ phone: payload.Phone }),
+    //   }
+    // );
 
-    if (!checkRes.ok) {
-      throw new Error("Check phone failed");
-    }
+    // if (!checkRes.ok) {
+    //   throw new Error("Check phone failed");
+    // }
 
-    const checkResult = await checkRes.json();
+    // const checkResult = await checkRes.json();
 
-    if (checkResult.response === "1") {
-      alert("Số điện thoại đã tồn tại trong hệ thống");
-      return;
-    }
+    // if (checkResult.response === "1") {
+    //   alert("Số điện thoại đã tồn tại trong hệ thống");
+    //   return;
+    // }
 
     // 2. Create loan
     const res = await fetch(
-      "/api/api/v1.0/LenderInformation/create",
+      "https://crmlenderapi.tima.vn/api/v1.0/LenderInformation/create",
       {
         method: "POST",
         headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
+          // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
@@ -123,7 +123,7 @@ const LoanPage: React.FC = () => {
             {/* Banner */}
             <div className="p-4 text-white text-center font-semibold text-lg bg-[#f88e51d1] shadow"
               style={{ textShadow: "2px 2px 4px rgb(22 2 2 / 88%)" }}>
-              Đăng ký Online - giải ngân trong 2 giờ
+              Đầu tư sinh lời - Minh bạch, an tâm
             </div>
 
             {/* Slider đè lên banner (dots nằm trên vùng banner) */}
