@@ -75,11 +75,11 @@ const LoanPage: React.FC = () => {
 
     // 2. Create loan
     const res = await fetch(
-      "https://crmlenderapi.tima.vn/api/v1.0/LenderInformation/create",
+      "https://externallos.tima.vn/api/crmlender/LenderInformation/create",
       {
         method: "POST",
         headers: {
-          // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJtb2JpbGVhcHAiLCJkYXRlIjoxNTE2MjM5MDIyfQ.J37ZXbdRabXYgtqE_NV7--0lZZqs_qMtO2JfCGczpZE",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
@@ -89,13 +89,31 @@ const LoanPage: React.FC = () => {
       throw new Error("Create loan failed");
 
     }
+    const result = await res.json();
+    const { errorCode, errorMessage } = result.meta;
+    console.log(result)
+    // xử lý từng trạng thái
+    switch (errorCode) {
+      case 200:
+        alert("Đăng ký thành công!");
+        break;
+
+      case 210:
+        alert("Thông tin đã được gửi trước đó và đang được Tima xử lý");
+        break;
+
+      default:
+        alert(errorMessage || "Có lỗi xảy ra");
+        return;
+    }
       // ✅ Reset form khi thành công
       setEmail("");
       setPhone("");
       setName("");
       setRefphone("");
-    alert("Đăng ký thành công!");
-
+    
+    // alert("Đăng ký thành công!");
+    
   } catch (err) {
     console.error(err);
     alert("Có lỗi xảy ra, vui lòng thử lại");
@@ -123,7 +141,7 @@ const LoanPage: React.FC = () => {
             {/* Banner */}
             <div className="p-4 text-white text-center font-semibold text-lg bg-[#f88e51d1] shadow"
               style={{ textShadow: "2px 2px 4px rgb(22 2 2 / 88%)" }}>
-              Đăng ký Online - giải ngân trong 2 giờ
+              Đầu tư sinh lời - Minh bạch, an tâm
             </div>
 
             {/* Slider đè lên banner (dots nằm trên vùng banner) */}
