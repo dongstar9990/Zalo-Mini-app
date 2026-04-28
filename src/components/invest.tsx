@@ -61,7 +61,7 @@ function Invest() {
       </div>
        {/* NỘI DUNG XỔ XUỐNG */}
         {openMoney && (
-          <div className="w-full  h-full  p-[12px] bg-gray-100 rounded shadow text-left fade-in-invest">
+          <div className="w-full  h-full  p-[12px] bg-white rounded shadow text-left fade-in-invest">
             <p className="text-base font-bold mb-2">Lợi nhuận đến 15,5%/năm</p>
             <div className="text-sm flex gap-2 h-full mb-2">
                 <img
