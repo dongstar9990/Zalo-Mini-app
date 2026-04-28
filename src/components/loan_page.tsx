@@ -233,8 +233,6 @@ const LoanPage: React.FC = () => {
                  <div className="text">
                   <h3><span className="top">Vay bằng đăng ký xe máy</span></h3>
                 </div> 
-                
-
               </a>
             </div>
 
@@ -275,7 +273,7 @@ const LoanPage: React.FC = () => {
         </div>
       </div>
     <div  style={{width:"100%",float:"left"}}>
-      <div className="title font-bold text-center mt-6 mb-4">
+      <div className="title font-bold text-center mt-6 mb-4 text-black">
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm vay<strong className="colorTima"> Online Nhanh tại Tima</strong>
             </h2>
@@ -353,7 +351,7 @@ const LoanPage: React.FC = () => {
         <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="modal-content bg-white rounded-lg p-6 w-full max-w-lg mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Bạn đang cần khoản vay</h3>
+              <h3 className="text-lg font-semibold text-black">Bạn đang cần khoản vay</h3>
               <button
                 onClick={closeModal}
                 className="text-gray-500 hover:text-gray-700 text-xl"
@@ -372,7 +370,7 @@ const LoanPage: React.FC = () => {
                   className="w-full border rounded px-3 py-2"
                 /> */}
                   <select
-                    className="w-full border rounded px-3 py-2 loan-option"
+                    className="w-full border rounded px-3 py-2 loan-option text-black"
                     value={loanType}
                     onChange={(e) => {
                       setLoanType(e.target.value);
@@ -430,7 +428,7 @@ const LoanPage: React.FC = () => {
                     value={province}
                     required
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 text-black"
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
                     <option value="An Giang">An Giang</option>
