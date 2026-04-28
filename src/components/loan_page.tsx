@@ -268,7 +268,7 @@ const LoanPage: React.FC = () => {
       {/* Download MyTima */}
       <div className="box-install-mytima-mobile">
         <div className="container-install">
-          <div className="title">
+          <div className="title text-black">
             <h2 style={{ fontSize: "18px" }}>
               Ưu điểm vay <strong className="colorTima">Online Nhanh tại Tima</strong>
             </h2>
@@ -297,7 +297,7 @@ const LoanPage: React.FC = () => {
               desc: "Cam kết bảo mật tuyệt đối thông tin người vay theo quy định của nhà nước",
             },
           ].map((item, i) => (
-            <div className="content" key={i}>
+            <div className="content text-black" key={i}>
               <div className="icon">
                 <img src={item.img} width="48px" alt={item.title}/>
               </div>
@@ -336,7 +336,7 @@ const LoanPage: React.FC = () => {
       </div>
 
       {/* Steps */}
-      <div className="box-step-borrow-mobile">
+      <div className="box-step-borrow-mobile" style={{backgroundColor:"#f9f9f9"}}>
         <div className="">
           <div className="title">
             <h2 style={{ fontSize: "18px" ,color: "black" }}>
@@ -404,7 +404,7 @@ const LoanPage: React.FC = () => {
         <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="modal-content bg-white rounded-lg p-6 w-full max-w-lg mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Bạn đang cần khoản vay</h3>
+              <h3 className="text-lg font-semibold text-black">Bạn đang cần khoản vay</h3>
               <button
                 onClick={closeModal}
                 className="text-gray-500 hover:text-gray-700 text-xl"
@@ -423,7 +423,7 @@ const LoanPage: React.FC = () => {
                   className="w-full border rounded px-3 py-2"
                 /> */}
                   <select
-                    className="w-full border rounded px-3 py-2 loan-option"
+                    className="w-full border rounded px-3 py-2 loan-option text-black"
                     value={loanType}
                     onChange={(e) => {
                       setLoanType(e.target.value);
@@ -480,7 +480,7 @@ const LoanPage: React.FC = () => {
                     value={province}
                     required
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 text-black"
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
                     <option value="An Giang">An Giang</option>
