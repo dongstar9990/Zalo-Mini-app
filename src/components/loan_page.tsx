@@ -367,10 +367,10 @@ useEffect(() => {
           {/* from đăng ký vay */}
           <div className="w-100-l right-content-product-header" style={{ backgroundImage: `url(${img})`,backgroundSize: "100% 100%" }}>
             <div className="text-center pt-4 px-8">
-                <label className="text-center font-bold text-[20px]">
+                <label className="text-center font-bold text-[20px] text-black">
                   <span className="colorTima ">Định Giá Xe</span> Đã Qua Sử Dụng
                 </label>
-                <p>
+                <p className="text-black">
                   500,000+ người vay thành công, Tima không thu bất kỳ khoản tiền nào
                   trước khi giải ngân.
                 </p>
@@ -406,7 +406,7 @@ useEffect(() => {
                     
                     {/* chọn hãng xe */}
                     <select
-                      className="w-full border rounded px-3 py-2 loan-option"
+                      className="w-full border rounded px-3 py-2 loan-option text-black"
                       value={selectedBrand}
                       onChange={(e) => {
                         setSelectedBrand(e.target.value);
@@ -429,7 +429,7 @@ useEffect(() => {
                     <label>Năm sản xuất</label>
                   
                     <select
-                            className="w-full border rounded px-3 py-2 loan-option"
+                            className="w-full border rounded px-3 py-2 loan-option text-black"
                             value={selectedYear}
                             onChange={(e) => setSelectedYear(e.target.value)}
                             disabled={!selectedBrand || years.length === 0}
@@ -452,7 +452,7 @@ useEffect(() => {
                     <label>Tên xe</label>
                   
                     <select
-                            className="w-full border rounded px-3 py-2 loan-option"
+                            className="w-full border rounded px-3 py-2 loan-option text-black"
                             value={selectedName}
                             disabled={!selectedBrand || years.length === 0 && !selectedYear || names.length === 0}
                             onChange={(e) => {
@@ -491,8 +491,8 @@ useEffect(() => {
       </div>
       <div  style={{width:"100%",float:"left"}}>
         <div className="title font-bold text-center mt-6 mb-4 mx-8" style={{padding:"0 40px"}}>
-              <h2 style={{ fontSize: "18px"}}>
-                Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
+              <h2 style={{ fontSize: "18px", color: "black" }}>
+                Ưu điểm gói vay Tima
               </h2>
         </div>
         <TextSlider />
