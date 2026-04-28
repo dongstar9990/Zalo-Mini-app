@@ -60,7 +60,7 @@ function TextSlider() {
                     />
 
                     {/* TEXT */}
-                    <p className="mt-3 text-center ">
+                    <p className="mt-3 text-center text-black">
                     {img.detail}<strong className="colorTima font-bold "> {img.title}</strong>
                     </p>
 

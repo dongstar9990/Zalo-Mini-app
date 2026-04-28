@@ -290,7 +290,7 @@ const LoanPage: React.FC = () => {
                 <select
                     required
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 text-black"
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
                     <option value="An Giang">An Giang</option>
@@ -359,7 +359,7 @@ const LoanPage: React.FC = () => {
               </div>
               <div className="box-form-register-loan">
                 <select
-                    className="w-full border rounded px-3 py-2 loan-option"
+                    className="w-full border rounded px-3 py-2 loan-option text-black"
                     value={loanType}
                     onChange={(e) => {
                       setLoanType(e.target.value);
