@@ -152,9 +152,9 @@ const LoanPage: React.FC = () => {
           <form className="right-content-product-header p-2 bg-white border rounded mx-2 mt-2  text-center"  onSubmit={handleSubmit}>
             <div className="box-register-loan">
               <div className="title-box-register-loan pt-2">
-                   <span className="colorTima text-lg font-bold">LỢI NHUẬN LÊN TỚI 15,5%/ NĂM</span> 
-                    <p className="text-sm font-bold">Khi đầu tư cho vay ngang hàng (P2P Lending)</p>
-                    <p className="text-xs">500,000+ người đã tin tưởng và đầu tư thành công tại Tima</p>
+                   <span className="colorTima text-lg font-bold ">LỢI NHUẬN LÊN TỚI 15,5%/ NĂM</span> 
+                    <p className="text-sm font-bold text-black">Khi đầu tư cho vay ngang hàng (P2P Lending)</p>
+                    <p className="text-xs text-black">500,000+ người đã tin tưởng và đầu tư thành công tại Tima</p>
               </div>
              
               {/* Input họ tên */}
