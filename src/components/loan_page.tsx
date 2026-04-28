@@ -285,7 +285,7 @@ const LoanPage: React.FC = () => {
                 <select
                     required
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 text-black"
                     
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
@@ -416,11 +416,11 @@ const LoanPage: React.FC = () => {
         </div>
       </div>
     <div  style={{width:"100%",float:"left"}}>
-      <div className="title font-bold text-center mt-6 mb-4 mx-8" style={{padding:"0 40px"}}>
+      <div className="title font-bold text-center mt-6 mb-4 mx-8 text-bold" style={{padding:"0 40px"}}>
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
             </h2>
-            <span className="italic font-normal text-sm">Hỗ trợ khách hàng muốn vay mua ô tô nhưng dưới chuẩn ngân </span>
+            <span className="italic font-normal text-sm text-black">Hỗ trợ khách hàng muốn vay mua ô tô nhưng dưới chuẩn ngân </span>
       </div>
       <TextSlider />
     </div>
