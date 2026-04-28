@@ -571,7 +571,7 @@ useEffect(() => {
     <div className="modal-content bg-white rounded-lg p-6 w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
       <div className="flex justify-between items-center mb-4">
         <div className="modal-header flex items-center">
-        <h3 className="text-lg font-semibold">KẾT QUẢ ĐỊNH GIÁ XE</h3>
+        <h3 className="text-lg font-semibold text-black">KẾT QUẢ ĐỊNH GIÁ XE</h3>
         </div>
         <button
           onClick={() => setValuationModalOpen(false)}
@@ -585,13 +585,13 @@ useEffect(() => {
         <div className="flex justify-center">
           <img src={ImgDinhGia} width="60%" />
         </div>
-        <div className="text-[20px] font-semibold leading-6 text-center ">
+        <div className="text-[20px] font-semibold leading-6 text-center text-black ">
           <label>
             Khoảng giá ước tính <span className="colorTima">tại Tima</span>
           </label>
         </div>
-        <div className="text-center text-[14px] mt-2 text-gray`">
-          <label>Tổng hợp từ hơn 350.000 nguồn dữ liệu</label>
+        <div className="text-center text-[14px] mt-2 text-gray">
+          <label className="text-black">Tổng hợp từ hơn 350.000 nguồn dữ liệu</label>
         </div>
         <div className="result">
           {valuationResult?.data && (
@@ -611,12 +611,12 @@ useEffect(() => {
         </div>
       </div>
       <div className="mt-4">
-             <strong className="title">Thông tin xe của bạn</strong>
+             <strong className="title text-black">Thông tin xe của bạn</strong>
         </div>
 
       <div className="bottom-modal mt-4 w-100-l px-4 py-4 bg-gray-100 rounded-xl">
    
-        <div className="boxInfomationCar">
+        <div className="boxInfomationCar text-black">
           <div>
             <label>Hãng xe</label>
             <strong className="w-100-l">{selectedBrand}</strong>
@@ -651,7 +651,7 @@ useEffect(() => {
         <div className="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="modal-content bg-white rounded-lg p-6 w-full max-w-lg mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Bạn đang cần khoản vay</h3>
+              <h3 className="text-lg font-semibold text-black">Bạn đang cần khoản vay</h3>
               <button
                 onClick={closeModal}
                 className="text-gray-500 hover:text-gray-700 text-xl"
@@ -662,7 +662,7 @@ useEffect(() => {
 
             <form onSubmit={handleLoanSubmit}>
               {/* LOẠI VAY */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Loại vay</label>
                 {/* <input
                   value={loanType}
@@ -670,7 +670,7 @@ useEffect(() => {
                   className="w-full border rounded px-3 py-2"
                 /> */}
                   <select
-                    className="w-full border rounded px-3 py-2 loan-option"
+                    className="w-full border rounded px-3 py-2 loan-option text-black"
                     value={loanType}
                     onChange={(e) => {
                       setLoanType(e.target.value);
@@ -727,7 +727,7 @@ useEffect(() => {
                     value={province}
                     required
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 text-black"
                     >
                     <option value="">-- Chọn tỉnh/thành --</option>
                     <option value="An Giang">An Giang</option>
