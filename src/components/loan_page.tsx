@@ -75,7 +75,7 @@ const LoanPage: React.FC = () => {
 
     // 2. Create loan
     const res = await fetch(
-      "/api/api/v1.0/LenderInformation/create",
+      "https://externallos.tima.vn/api/crmlender/LenderInformation/create",
       {
         method: "POST",
         headers: {
