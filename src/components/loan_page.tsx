@@ -203,7 +203,7 @@ const LoanPage: React.FC = () => {
 
   return (
     
-    <div className="bg-orange-50" style={{width:"100%" ,overflowX:"hidden"}}>
+    <div className="bg-orange-50 min-h-screen " style={{width:"100%" ,overflowX:"hidden"}}>
      
       {/* Logo */}
       <div className="box-product"  style={{width:"100%",float:"left"}}>
@@ -236,7 +236,7 @@ const LoanPage: React.FC = () => {
                 </label>
               </div>
               {/* Input họ tên */}
-              <div className="box-form-register-loan">
+              <div className="box-form-register-loan text-black">
                 <input
                   value={name}
                   required
@@ -247,7 +247,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* Input số điện thoại */}
-              <div className="box-form-register-loan">
+              <div className="box-form-register-loan text-black">
                 <input
                   value={phone}
                   required
