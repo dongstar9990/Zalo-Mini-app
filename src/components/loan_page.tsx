@@ -200,7 +200,7 @@ const LoanPage: React.FC = () => {
 
   return (
     
-    <div className="bg-orange-50" style={{width:"100%" ,overflowX:"hidden"}}>
+    <div className="bg-orange-50 min-h-screen" style={{width:"100%" ,overflowX:"hidden"}}>
      
       {/* Logo */}
       <div className="box-product"  style={{width:"100%",float:"left"}}>
@@ -389,7 +389,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* HỌ TÊN */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Họ và tên</label>
                 <input
                   value={name}
@@ -400,7 +400,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* ĐIỆN THOẠI */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Số điện thoại</label>
                 <input
                   value={phone}
@@ -422,7 +422,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* TỈNH THÀNH */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Tỉnh / Thành phố</label>
                 <select
                     value={province}
