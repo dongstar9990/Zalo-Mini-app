@@ -441,7 +441,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* HỌ TÊN */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Họ và tên</label>
                 <input
                   value={name}
@@ -452,7 +452,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* ĐIỆN THOẠI */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Số điện thoại</label>
                 <input
                   value={phone}
@@ -474,7 +474,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* TỈNH THÀNH */}
-              <div className="mb-3">
+              <div className="mb-3 text-black">
                 <label className="block text-gray-700">Tỉnh / Thành phố</label>
                 <select
                     value={province}
@@ -551,7 +551,7 @@ const LoanPage: React.FC = () => {
 
               {/* GÓI VAY */}
               {showLoanPackage && (
-                <div className="mb-3">
+                <div className="mb-3 text-black">
                   <label className="block text-gray-700">Gói vay</label>
                   <select
                     value={loanPackage}
