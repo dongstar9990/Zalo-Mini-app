@@ -122,7 +122,7 @@ const LoanPage: React.FC = () => {
 
 
   return (
-    <div className="bg-orange-50 pb-2">
+    <div className="bg-orange-50 pb-2 min-h-screen">
       {/* Logo */}
       <div className="box-product">
         <div className="">
@@ -158,7 +158,7 @@ const LoanPage: React.FC = () => {
               </div>
              
               {/* Input họ tên */}
-              <div className="box-form-register-loan p-2 text-sm mt-2">
+              <div className="box-form-register-loan p-2 text-sm mt-2 text-black">
                 <input
                   value={name}
                   required
@@ -169,7 +169,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* Input số điện thoại */}
-              <div className="box-form-register-loan p-2 text-sm">
+              <div className="box-form-register-loan p-2 text-sm text-black">
                 <input
                   value={phone}
                   required
@@ -203,7 +203,7 @@ const LoanPage: React.FC = () => {
               </div>
 
                {/* Input email */}
-              <div className="box-form-register-loan p-2 text-sm">
+              <div className="box-form-register-loan p-2 text-sm text-black">
                 <input
                   value={email}
                   required
@@ -214,7 +214,7 @@ const LoanPage: React.FC = () => {
               </div>
 
               {/* SDT nguoi gioi thieu */}
-              <div className="box-form-register-loan p-2 text-sm">
+              <div className="box-form-register-loan p-2 text-sm text-black">
                 <input
                   value={refphone}
                   onChange={(e) => setRefphone(e.target.value)}
