@@ -89,26 +89,12 @@ const LoanPage: React.FC = () => {
       throw new Error("Create loan failed");
 
     }
-    const result = await res.json();
-    const { errorCode, errorMessage } = result.meta;
-    console.log(result)
-    // xử lý từng trạng thái
-    switch (errorCode) {
-    case 200:
+      // ✅ Reset form khi thành công
+      setEmail("");
+      setPhone("");
+      setName("");
+      setRefphone("");
     alert("Đăng ký thành công!");
-    break;
-    case 210:
-    alert("Thông tin đã được gửi trước đó và đang được Tima xử lý");
-    break;
-    default:
-    alert(errorMessage || "Có lỗi xảy ra");
-    return;
-    }
-    // ✅ Reset form khi thành công
-    setEmail("");
-    setPhone("");
-    setName("");
-    setRefphone("");
 
   } catch (err) {
     console.error(err);
