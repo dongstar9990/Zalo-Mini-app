@@ -439,7 +439,7 @@ const LoanPage: React.FC = () => {
         </div>
       </div>
     <div  style={{width:"100%",float:"left"}}>
-      <div className="title font-bold text-center mt-6 mb-4 mx-8" style={{padding:"0 40px"}}>
+      <div className="title font-bold text-center mt-6 mb-4 mx-8 text-bold" style={{padding:"0 40px"}}>
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
             </h2>
