@@ -349,7 +349,7 @@ const LoanPage: React.FC = () => {
                     <option value="Thanh Hóa">Thanh Hóa</option>
                     <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
                     <option value="Tiền Giang">Tiền Giang</option>
-                    <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                    <option value="Hồ Chí Minh">TP. Hồ Chí Minh</option>
                     <option value="Trà Vinh">Trà Vinh</option>
                     <option value="Tuyên Quang">Tuyên Quang</option>
                     <option value="Vĩnh Long">Vĩnh Long</option>
