@@ -82,14 +82,14 @@ const LoanPage: React.FC = () => {
 
   //call api lấy tỉnh thành
 useEffect(() =>{
-    fetch("http://178.128.86.175:8877/api/v1.0/landingpage/get_province_new")
+    fetch("https://apiapplos.tima.vn/api/v1.0/landingpage/get_city_all")
     .then((res)=>res.json())
     .then((data) => {
       setProvinces(data.data)
     })
     .catch((err) => console.log(err));
 },[]);
-      console.log(provinces);
+      //console.log(provinces);
 
 
 // xử lý sự kiện khi chọn tỉnh thành, gọi api lấy quận huyện theo tỉnh
@@ -104,7 +104,7 @@ const handleProvinceChange = async (e: any) => {
   if (!selectedId) return;
   try{
     //cap api laays quận huyện theo tỉnh thành
-    const res=await fetch(`http://178.128.86.175:8877/api/v1.0/landingpage/get_ward_new?provinceId=${selectedId}`);
+    const res=await fetch(`https://apiapplos.tima.vn/api/v1.0/landingpage/get_district_all?provinceId=${selectedId}`);
     const data = await res.json();
     setDistricts(data.data);
   } catch (err) {
@@ -140,9 +140,9 @@ const handleProvinceChange = async (e: any) => {
 
       // Lấy tên tỉnh từ provinceId
       const selectedProvince = provinces.find(
-     (x) => x.id === Number(provinceId)
+     (x) => x.provinceId === Number(provinceId)
     );
-
+    const selectedProvinceName = selectedProvince ? selectedProvince.name : "";
     // Làm sạch tên tỉnh và quận huyện trước khi gửi lên API
     const cleanProvince = (selectedProvince?.name || "")
     .replace("Tỉnh ", "")
@@ -445,7 +445,7 @@ const handleProvinceChange = async (e: any) => {
                       <option value="">-- Chọn tỉnh/thành --</option>
                     {
                       provinces.map((items)=>(
-                        <option key={items.id} value={items.id}>
+                        <option key={items.provinceId} value={items.provinceId}>
                             {items.name}
                         </option>
                       ))
