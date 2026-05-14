@@ -142,7 +142,6 @@ const handleProvinceChange = async (e: any) => {
       const selectedProvince = provinces.find(
      (x) => x.provinceId === Number(provinceId)
     );
-    const selectedProvinceName = selectedProvince ? selectedProvince.name : "";
     // Làm sạch tên tỉnh và quận huyện trước khi gửi lên API
     const cleanProvince = (selectedProvince?.name || "")
     .replace("Tỉnh ", "")
