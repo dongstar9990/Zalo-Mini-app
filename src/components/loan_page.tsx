@@ -140,7 +140,7 @@ const LoanPage: React.FC = () => {
               <div className="title-box-register-loan pt-2">
                    <span className="colorTima text-lg font-bold ">LỢI NHUẬN LÊN TỚI 15,5%/ NĂM</span> 
                     <p className="text-sm font-bold text-black">Khi đầu tư qua Tima</p>
-                    <p className="text-xs text-black">500.000 người đã tin tưởng và đầu tư thành công</p>
+                    <p className="text-xs text-black">500.000+ người đã tin tưởng và đầu tư thành công</p>
               </div>
              
               {/* Input họ tên */}
