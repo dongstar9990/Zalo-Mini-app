@@ -1,30 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/app.scss"; // import CSS custom nếu có
 import { TextSlider } from "./slider";
-
-
-import vayOtoImg from '../pages/images/vayoto.svg';
-import vayBangOtoImg from '../pages/images/vay-mua-to.svg';
-import khacImg from '../pages/images/khac.svg';
-
 import img from '../pages/images/header-backgroud.png'; 
-
 import iconOrange from '../pages/images/icon-orange.png';
 import phoneStepBorrow from '../pages/images/phone-step-borow-4.png';   
-
 import logoTima from '../pages/images/logo-tima.png';  
-import Imgxemay from '../pages/images/vay-dkxemay.png'; 
-import Imgoto from '../pages/images/vay-dkxoto.png'; 
-
-
-import icon01 from '../pages/images/icon-01.png';
-import icon02 from '../pages/images/icon-02.png';
-import icon03 from '../pages/images/icon-03.png';
-import icon04 from '../pages/images/icon-04.png';
-
-import qrMyTima from '../pages/images/qr-mytima.png';
-import downloadAppImg from '../pages/images/icon-download.png';
-import zmp from "zmp-sdk";
 import { openWebview } from "zmp-sdk";
 
 const LoanPage: React.FC = () => {
@@ -35,10 +15,16 @@ const LoanPage: React.FC = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [province, setProvince] = useState("");
+  const [provinceId, setProvinceId] = useState("");
+  const [district, setDistrict] = useState("");// dữ liệu người dùng chọn
   const [referralCode, setReferralCode] = useState("");
   const [loanPackage, setLoanPackage] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeCarReg, setAgreeCarReg] = useState(false);
+
+  //dữ liệu api đổ về
+  const [provinces, setProvinces] = useState<any[]>([]);
+  const [districts, setDistricts] = useState<any[]>([]);
 
   // Điều khiển ẩn/hiện
   const [showReferral, setShowReferral] = useState(true);
@@ -86,39 +72,85 @@ const LoanPage: React.FC = () => {
     setName("");
     setPhone("");
     setProvince("");
+    setProvinceId("");
+    setDistrict("");
     setReferralCode("");
     setLoanPackage("");
     setAgreeTerms(false);
     setAgreeCarReg(false);
   };
 
+  //call api lấy tỉnh thành
+useEffect(() =>{
+    fetch("https://apiapplos.tima.vn/api/v1.0/landingpage/get_city_all")
+    .then((res)=>res.json())
+    .then((data) => {
+      setProvinces(data.data)
+    })
+    .catch((err) => console.log(err));
+},[]);
+      //console.log(provinces);
+
+// xử lý sự kiện khi chọn tỉnh thành, gọi api lấy quận huyện theo tỉnh
+const handleProvinceChange = async (e: any) => {
+  const selectedId = e.target.value;//lấy íd tỉnh thành người dùng chọn
+  setProvinceId(selectedId);// lưu id tỉnh thành vào state
+
+  // reset huyện
+  setDistrict("");
+  setDistricts([]);
+
+  if (!selectedId) return;
+  try{
+    //cap api laays quận huyện theo tỉnh thành
+    const res=await fetch(`https://apiapplos.tima.vn/api/v1.0/landingpage/get_district_all?provinceId=${selectedId}`);
+    const data = await res.json();
+    setDistricts(data.data);
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(districts);
+};
+
+
+// Xử lý submit form
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    
     // 1. Validate input
     if (!PHONE_REGEX.test(phone)) {
       alert("Số điện thoại không hợp lệ");
       return;
     }
-
     if (isSubmitting) return;
-
     setIsSubmitting(true);
     setBlocking(true);
-    try {
+// Lấy tên tỉnh từ provinceId
+      const selectedProvince = provinces.find(
+     (x) => x.provinceId === Number(provinceId)
+    );
+    // Làm sạch tên tỉnh và quận huyện trước khi gửi lên API
+    const cleanProvince = (selectedProvince?.name || "")
+    .replace("Tỉnh ", "")
+    .replace("Thành phố ", "");
+// Làm sạch tên quận huyện
+    const cleanDistrict = district
+      .replace("Xã ", "")
+      .replace("Phường ", "")
+      .replace("Thị trấn ", "");
 
+
+    try {
       const payload = {
         productId: 31,
         fullName: name,
         phone,
-        provinceName: province,
+        provinceName: cleanProvince,
         partnerName: "Zalo OA",
-        districtName: null,
+        districtName: cleanDistrict,
         nationalCard: null,
         loanAmount: null,
         affSId: null,
       };
-
       // 1. Check phone
       const checkRes = await fetch(
         "https://n8n.anntech.one/webhook/check_exis_phonenb_los",
@@ -128,20 +160,16 @@ const LoanPage: React.FC = () => {
           body: JSON.stringify({ phone: payload.phone }),
         }
       );
-
       if (!checkRes.ok) {
         throw new Error("Check phone failed");
       }
-
       const checkResult = await checkRes.json();
-
       if (checkResult.response === "1") {
         alert("Số điện thoại đã tồn tại trong hệ thống");
         setIsSubmitting(false);
         setBlocking(false);
         return;
       }
-
       // 2. Create loan
       const res = await fetch(
         "https://apilos.tima.vn/api/v1.0/affiliatetima/create_loan_tima",
@@ -183,23 +211,6 @@ const LoanPage: React.FC = () => {
       setBlocking(false);
     }
   };
-
-
-
-
-//   const handleDownload = () => {
-//     const userAgent = navigator.userAgent;
-
-//     let url = "https://tima.vn/app-download";
-
-//     if (/iPad|iPhone|iPod/.test(userAgent)) {
-//       url = "https://apps.apple.com/vn/app/my-tima/id6463413676?l=vi";
-//     } else if (/android/i.test(userAgent)) {
-//       url = "https://play.google.com/store/apps/details?id=com.mytima";
-//     }
-
-//     window.location.href = url;
-//   };
 
   return (
     
@@ -283,74 +294,36 @@ const LoanPage: React.FC = () => {
               {/* Select tỉnh thành */}
               <div className="box-form-register-loan">
                 <select
+                    value={provinceId}
                     required
-                    onChange={(e) => setProvince(e.target.value)}
+                    onChange={handleProvinceChange}
                     className="w-full border rounded px-3 py-2 text-black"
-                    
                     >
-                    <option value="">-- Chọn tỉnh/thành --</option>
-                    <option value="An Giang">An Giang</option>
-                    <option value="Bà Rịa – Vũng Tàu">Bà Rịa – Vũng Tàu</option>
-                    <option value="Bắc Giang">Bắc Giang</option>
-                    <option value="Bắc Kạn">Bắc Kạn</option>
-                    <option value="Bạc Liêu">Bạc Liêu</option>
-                    <option value="Bắc Ninh">Bắc Ninh</option>
-                    <option value="Bến Tre">Bến Tre</option>
-                    <option value="Bình Định">Bình Định</option>
-                    <option value="Bình Dương">Bình Dương</option>
-                    <option value="Bình Phước">Bình Phước</option>
-                    <option value="Bình Thuận">Bình Thuận</option>
-                    <option value="Cà Mau">Cà Mau</option>
-                    <option value="Cần Thơ">Cần Thơ</option>
-                    <option value="Đà Nẵng">Đà Nẵng</option>
-                    <option value="Đắk Lắk">Đắk Lắk</option>
-                    <option value="Đắk Nông">Đắk Nông</option>
-                    <option value="Điện Biên">Điện Biên</option>
-                    <option value="Đồng Nai">Đồng Nai</option>
-                    <option value="Đồng Tháp">Đồng Tháp</option>
-                    <option value="Gia Lai">Gia Lai</option>
-                    <option value="Hà Giang">Hà Giang</option>
-                    <option value="Hà Nam">Hà Nam</option>
-                    <option value="Hà Nội">Hà Nội</option>
-                    <option value="Hà Tĩnh">Hà Tĩnh</option>
-                    <option value="Hải Dương">Hải Dương</option>
-                    <option value="Hải Phòng">Hải Phòng</option>
-                    <option value="Hậu Giang">Hậu Giang</option>
-                    <option value="Hòa Bình">Hòa Bình</option>
-                    <option value="Hưng Yên">Hưng Yên</option>
-                    <option value="Khánh Hòa">Khánh Hòa</option>
-                    <option value="Kiên Giang">Kiên Giang</option>
-                    <option value="Kon Tum">Kon Tum</option>
-                    <option value="Lai Châu">Lai Châu</option>
-                    <option value="Lâm Đồng">Lâm Đồng</option>
-                    <option value="Lạng Sơn">Lạng Sơn</option>
-                    <option value="Lào Cai">Lào Cai</option>
-                    <option value="Long An">Long An</option>
-                    <option value="Nam Định">Nam Định</option>
-                    <option value="Nghệ An">Nghệ An</option>
-                    <option value="Ninh Bình">Ninh Bình</option>
-                    <option value="Ninh Thuận">Ninh Thuận</option>
-                    <option value="Phú Thọ">Phú Thọ</option>
-                    <option value="Phú Yên">Phú Yên</option>
-                    <option value="Quảng Bình">Quảng Bình</option>
-                    <option value="Quảng Nam">Quảng Nam</option>
-                    <option value="Quảng Ngãi">Quảng Ngãi</option>
-                    <option value="Quảng Ninh">Quảng Ninh</option>
-                    <option value="Quảng Trị">Quảng Trị</option>
-                    <option value="Sóc Trăng">Sóc Trăng</option>
-                    <option value="Sơn La">Sơn La</option>
-                    <option value="Tây Ninh">Tây Ninh</option>
-                    <option value="Thái Bình">Thái Bình</option>
-                    <option value="Thái Nguyên">Thái Nguyên</option>
-                    <option value="Thanh Hóa">Thanh Hóa</option>
-                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
-                    <option value="Tiền Giang">Tiền Giang</option>
-                    <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                    <option value="Trà Vinh">Trà Vinh</option>
-                    <option value="Tuyên Quang">Tuyên Quang</option>
-                    <option value="Vĩnh Long">Vĩnh Long</option>
-                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
-                    <option value="Yên Bái">Yên Bái</option>
+                      <option value="">-- Chọn tỉnh/thành --</option>
+                    {
+                      provinces.map((items)=>(
+                        <option key={items.provinceId} value={items.provinceId}>
+                            {items.name}
+                        </option>
+                      ))
+                    }
+                </select>
+              </div>
+
+              {/* Select quận huyện */}
+              <div className="box-form-register-loan">
+                <select
+                  value={district}
+                  required
+                  onChange={(e) => setDistrict(e.target.value)}
+                  className="w-full border rounded px-3 py-2 text-black"
+                >
+                  <option value="">-- Chọn quận/huyện --</option>
+                  {districts.map((item) => (
+                    <option key={item.id} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               
@@ -420,7 +393,7 @@ const LoanPage: React.FC = () => {
             <h2 style={{ fontSize: "18px"}}>
               Ưu điểm gói vay Tima<strong className="colorTima"> </strong>
             </h2>
-            <span className="italic font-normal text-sm text-black">Hỗ trợ khách hàng muốn vay mua ô tô nhưng dưới chuẩn ngân </span>
+            <span className="italic font-normal text-sm text-black">Hỗ trợ khách hàng muốn vay mua ô tô nhưng dưới chuẩn ngân hàng </span>
       </div>
       <TextSlider />
     </div>
