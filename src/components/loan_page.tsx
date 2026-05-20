@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/app.scss"; // import CSS custom nếu có
 
 import logoTima from "../pages/images/logo_tima-invest.png";
-import logoTimaDauTu from "../pages/images/logo_tima-dau-tu.png";
+import logoTimaDauTu from "../pages/images/logo-tima.png";
 
 import { openWebview } from "zmp-sdk";
 import { TextSlider } from "./slider";
@@ -123,7 +123,7 @@ const LoanPage: React.FC = () => {
             {/* Banner */}
             <div className="p-4 text-white text-center font-semibold text-lg bg-[#f88e51d1] shadow"
               style={{ textShadow: "2px 2px 4px rgb(22 2 2 / 88%)" }}>
-              Đầu tư sinh lời - Minh bạch, an tâm
+              Sàn kết nối tài chính
             </div>
 
             {/* Slider đè lên banner (dots nằm trên vùng banner) */}
@@ -138,9 +138,8 @@ const LoanPage: React.FC = () => {
           <form className="right-content-product-header p-2 bg-white border rounded mx-2 mt-2  text-center"  onSubmit={handleSubmit}>
             <div className="box-register-loan">
               <div className="title-box-register-loan pt-2">
-                   <span className="colorTima text-lg font-bold ">LỢI NHUẬN LÊN TỚI 15,5%/ NĂM</span> 
-                    <p className="text-sm font-bold text-black">Khi đầu tư qua Tima</p>
-                    <p className="text-xs text-black">500.000+ người đã tin tưởng và đầu tư thành công</p>
+                   <span className="colorTima text-lg font-bold ">THAM GIA TÀI TRỢ VỐN QUA TIMA</span> 
+                    <p className="text-xs text-black">500.000+ người đã tin tưởng và lựa chọn</p>
               </div>
              
               {/* Input họ tên */}
@@ -194,7 +193,7 @@ const LoanPage: React.FC = () => {
                   value={email}
                   required
                   onChange={(e) => setEmail(e.target.value)}
-                   placeholder="Nhập email nhà đầu tư *"
+                   placeholder="Nhập email *"
                   className="w-full border rounded px-3 py-2"
                 />
               </div>
