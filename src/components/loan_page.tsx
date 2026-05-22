@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../css/app.scss"; // import CSS custom nếu có
 
-import logoTima from "../pages/images/logo_tima-invest.png";
-import logoTimaDauTu from "../pages/images/logo-tima.png";
+import logoTimaDauTu from "../pages/images/logo_tima.png";
 
 import { openWebview } from "zmp-sdk";
 import { TextSlider } from "./slider";
